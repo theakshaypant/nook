@@ -1,0 +1,55 @@
+(defpoll gmail-data
+  :interval "600s"
+  :initial '{"total":0,"items":[],"updated":"--:--"}'
+  `scripts/fetch_gmail.sh`)
+
+(defwidget email-item [from_name subject snippet time url]
+  (button :onclick "xdg-open '${url}' &"
+    (box :class "email-item" :orientation "v" :space-evenly false
+      (box :space-evenly false
+        (label :class "email-from" :text from_name :hexpand true :xalign 0 :limit-width 35 :truncate true)
+        (label :class "email-time" :text time))
+      (box :space-evenly false :spacing 4
+        (label :class "email-subject" :text subject :limit-width 25 :truncate true :xalign 0)
+        (label :class "email-snippet" :text "— ${snippet}" :hexpand true :xalign 0 :limit-width 25 :truncate true)))))
+
+(defwidget gmail-widget []
+  (box :class "card" :orientation "v" :space-evenly false
+    ;; Header
+    (box :class "header" :space-evenly false :spacing 8 :halign "center"
+      (image :class "gmail-logo" :path "assets/gmail.svg"
+             :image-width 20 :image-height 20)
+      (label :class "badge" :text {gmail-data.total} :visible {gmail-data.total > 0}))
+
+    ;; Email list
+    (scroll :class "items-scroll" :vscroll true :hscroll false
+            :height 290
+            :visible {gmail-data.total > 0}
+      (box :orientation "v" :space-evenly false
+        (for item in {gmail-data.items}
+          (email-item :from_name {item.from_name}
+                      :subject {item.subject}
+                      :snippet {item.snippet}
+                      :time {item.time}
+                      :url {item.url}))))
+
+    ;; Empty state
+    (box :visible {gmail-data.total == 0} :class "empty-box"
+      (label :class "empty" :text "Inbox zero"))
+
+    ;; Footer
+    (label :class "footer" :text "${gmail-data.total} unread · ${gmail-data.updated}"
+           :xalign 1 :valign "end" :vexpand true)))
+
+(defwindow gmail
+  :monitor 0
+  :geometry (geometry
+    :x "-1025px"
+    :y "514px"
+    :width "500px"
+    :height "377px"
+    :anchor "top right")
+  :stacking "bottom"
+  :focusable false
+  :windowtype "desktop"
+  (gmail-widget))
