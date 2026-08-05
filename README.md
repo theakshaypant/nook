@@ -27,6 +27,14 @@ Reuses OAuth credentials from [tsk](https://github.com/theakshaypant/tsk), my CL
 
 Circular gauges for CPU and RAM, a progress bar for disk, live network throughput, and CPU temperature. All from eww's built-in variables — no external scripts needed.
 
+### Weather
+
+Current conditions with an animated icon overlay, high/low/feels-like, wind, humidity, UV index, and pressure. A 12-hour hourly forecast scrolls horizontally at the bottom. The card background shifts based on weather condition and time of day.
+
+Set your city in `config.yaml` — location is resolved via Open-Meteo's geocoding API. Refreshes every 15 minutes.
+
+Weather data by [Open-Meteo.com](https://open-meteo.com/) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Weather icons from [Meteocons](https://github.com/basmilius/weather-icons) (MIT).
+
 ### World Clock
 
 Local time plus nine cities my team is spread across. Same-timezone cities are grouped. Night hours are dimmed. Click any time to enter edit mode and preview what a given hour looks like in every zone — handy for scheduling across continents.
@@ -60,6 +68,9 @@ To stop everything:
 Copy `config.yaml` and adjust:
 
 ```yaml
+weather:
+  city: "Berlin"
+
 calendar:
   credentials_file: "~/.config/tsk/work_credentials.json"
   token_file: "~/.config/tsk/work_token.json"
