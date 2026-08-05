@@ -1,0 +1,65 @@
+(defpoll watch-data
+  :interval "1s"
+  :initial '{"local":{"time":"--:--","date":"","tz":"","editing":false},"editing":false,"editing_tz":"","editing_city":"","cities":[]}'
+  `scripts/fetch_watch.sh`)
+
+(defwidget city-row [names flags count time offset is_night editing tz]
+  (box :class "city-row ${is_night ? 'night' : ''} ${editing ? 'editing' : ''}" :orientation "v" :space-evenly false
+    (box :space-evenly false
+      (label :class "city-flags" :text flags)
+      (label :class "city-name-inline" :text names :hexpand true :xalign 0
+             :limit-width 18
+             :visible {count == 1})
+      (box :hexpand true :visible {count > 1})
+      (button :class "city-time-btn"
+              :onclick "echo '${tz}' > /tmp/nook-watch-custom"
+        (label :class "city-time" :text time))
+      (label :class "city-offset" :text offset))
+    (label :class "city-names" :text names :xalign 0
+           :limit-width 35
+           :visible {count > 1})))
+
+(defwidget watch-widget []
+  (box :class "card watch-card" :orientation "v" :space-evenly false :width 328
+    (box :class "local-row" :orientation "v" :space-evenly false :halign "center"
+      (button :class "local-time-btn"
+              :visible {!watch-data.local.editing}
+              :onclick "echo 'local' > /tmp/nook-watch-custom"
+        (label :class "local-time" :text {watch-data.local.time}))
+      (input :class "local-time-input"
+             :visible {watch-data.local.editing}
+             :onaccept "if echo '{}' | grep -qE '^([01][0-9]|2[0-3]):[0-5][0-9]$'; then echo 'local {}' > /tmp/nook-watch-custom; else rm -f /tmp/nook-watch-custom; fi")
+      (box :space-evenly false :spacing 8 :halign "center"
+        (label :class "local-date" :text {watch-data.local.date})
+        (label :class "local-tz" :text {watch-data.local.tz})
+        (button :class "reset-btn" :visible {watch-data.editing}
+                :onclick "rm -f /tmp/nook-watch-custom"
+          (label :class "reset-label" :text "reset"))))
+
+    (scroll :class "cities-scroll" :vscroll true :hscroll false
+            :height 195
+            :visible {arraylength(watch-data.cities) > 0}
+      (box :orientation "v" :space-evenly false
+        (for city in {watch-data.cities}
+          (city-row :names {city.names} :flags {city.flags}
+                    :count {city.count} :time {city.time}
+                    :offset {city.offset} :is_night {city.is_night}
+                    :editing {city.editing} :tz {city.tz}))
+        (box :class "city-edit-row" :space-evenly false :spacing 6
+             :visible {watch-data.editing && watch-data.editing_tz != "local"}
+          (label :class "city-edit-label" :text "${watch-data.editing_city} · HH:MM")
+          (input :class "city-time-input"
+                 :onaccept "if echo '{}' | grep -qE '^([01][0-9]|2[0-3]):[0-5][0-9]$'; then echo '${watch-data.editing_tz} {}' > /tmp/nook-watch-custom; else rm -f /tmp/nook-watch-custom; fi"))))))
+
+(defwindow watch
+  :monitor 0
+  :geometry (geometry
+    :x "-400px"
+    :y "60px"
+    :width "352px"
+    :height "230px"
+    :anchor "top right")
+  :stacking "bottom"
+  :focusable false
+  :windowtype "desktop"
+  (watch-widget))
