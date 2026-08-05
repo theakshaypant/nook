@@ -9,8 +9,8 @@
     background-color: rgba(255, 255, 255, 0.08);
 }
 
-.gauge-cpu { color: #7aa2f7; }
-.gauge-ram { color: #7dcfff; }
+.gauge-cpu { color: #b89470; }
+.gauge-ram { color: #8a9878; }
 
 .gauge-inner {
     min-width: 100px;
@@ -18,25 +18,25 @@
 }
 
 .gauge-value {
-    color: #c0caf5;
+    color: #c8c2ba;
     font-size: 18px;
     font-weight: bold;
 }
 
 .gauge-label {
-    color: #a9b1d6;
+    color: #9a918a;
     font-size: 14px;
     margin-top: 6px;
 }
 
 .gauge-sub {
-    color: #565f89;
+    color: #706860;
     font-size: 12px;
 }
 
-.heading-disk    { color: #bb9af7; }
-.heading-net     { color: #9ece6a; }
-.heading-temp    { color: #7aa2f7; }
+.heading-disk    { color: #9a8478; }
+.heading-net     { color: #8fa07a; }
+.heading-temp    { color: #b89470; }
 
 // Progress bars
 .stat-progress {
@@ -54,10 +54,10 @@
     }
 }
 
-.fill-purple progress { background-color: #bb9af7; }
+.fill-purple progress { background-color: #9a8478; }
 
 .stat-bar-value {
-    color: #c0caf5;
+    color: #c8c2ba;
     font-size: 13px;
 }
 
@@ -66,12 +66,12 @@
     font-size: 14px;
 }
 
-.net-up   { color: #9ece6a; }
-.net-down { color: #7dcfff; }
+.net-up   { color: #8fa07a; }
+.net-down { color: #8a9878; }
 
 // Temperature
 .temp-value {
-    color: #7aa2f7;
+    color: #b89470;
     font-size: 14px;
     font-weight: bold;
 }

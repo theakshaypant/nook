@@ -3,8 +3,8 @@
 }
 
 .badge {
-    color: #1a1b26;
-    background-color: #7aa2f7;
+    color: #262220;
+    background-color: #b89470;
     font-size: 10px;
     font-weight: bold;
     border-radius: 10px;
@@ -23,11 +23,11 @@
     padding: 1px 6px;
 }
 
-.tag-mention  { color: #f7768e; background-color: rgba(247, 118, 142, 0.12); }
-.tag-review   { color: #bb9af7; background-color: rgba(187, 154, 247, 0.12); }
-.tag-assign   { color: #e0af68; background-color: rgba(224, 175, 104, 0.12); }
-.tag-ci       { color: #9ece6a; background-color: rgba(158, 206, 106, 0.12); }
-.tag-comment  { color: #7dcfff; background-color: rgba(125, 207, 255, 0.12); }
+.tag-mention  { color: #b07868; background-color: rgba(176, 120, 104, 0.12); }
+.tag-review   { color: #9a8478; background-color: rgba(154, 132, 120, 0.12); }
+.tag-assign   { color: #c4a878; background-color: rgba(196, 168, 120, 0.12); }
+.tag-ci       { color: #8fa07a; background-color: rgba(143, 160, 122, 0.12); }
+.tag-comment  { color: #8a9878; background-color: rgba(138, 152, 120, 0.12); }
 
 .item {
     padding: 2px 0;
@@ -39,20 +39,20 @@
     margin-right: 6px;
 }
 
-.type-PR    { color: #bb9af7; }
-.type-Issue { color: #9ece6a; }
-.type-CI    { color: #e0af68; }
-.type-Disc  { color: #7dcfff; }
-.type-Rel   { color: #f7768e; }
+.type-PR    { color: #9a8478; }
+.type-Issue { color: #8fa07a; }
+.type-CI    { color: #c4a878; }
+.type-Disc  { color: #8a9878; }
+.type-Rel   { color: #b07868; }
 
 .item-repo {
-    color: #565f89;
+    color: #706860;
     font-size: 10px;
     margin-right: 6px;
     min-width: 105px;
 }
 
 .item-title {
-    color: #c0caf5;
+    color: #c8c2ba;
     font-size: 10px;
 }

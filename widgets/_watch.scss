@@ -1,19 +1,19 @@
 .local-row {
     padding: 8px 0;
     margin-bottom: 8px;
-    border-bottom: 1px solid rgba(192, 202, 245, 0.08);
+    border-bottom: 1px solid rgba(200, 194, 186, 0.08);
 }
 
 .local-time-btn:hover .local-time {
-    color: #7dcfff;
+    color: #c4a878;
 }
 
 .local-time-input {
-    color: #7aa2f7;
+    color: #b89470;
     font-size: 28px;
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.06);
-    border: 1px solid #7aa2f7;
+    border: 1px solid #b89470;
     border-radius: 6px;
     padding: 2px 8px;
     min-width: 120px;
@@ -24,27 +24,27 @@
 }
 
 .reset-label {
-    color: #565f89;
+    color: #706860;
     font-size: 10px;
 }
 
 .reset-btn:hover .reset-label {
-    color: #f7768e;
+    color: #b07868;
 }
 
 .local-time {
-    color: #7aa2f7;
+    color: #b89470;
     font-size: 28px;
     font-weight: bold;
 }
 
 .local-date {
-    color: #a9b1d6;
+    color: #9a918a;
     font-size: 12px;
 }
 
 .local-tz {
-    color: #565f89;
+    color: #706860;
     font-size: 12px;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .city-edit-label {
-    color: #565f89;
+    color: #706860;
     font-size: 11px;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .city-row.editing .city-time {
-    color: #7aa2f7;
+    color: #b89470;
 }
 
 .city-flags {
@@ -75,33 +75,33 @@
 }
 
 .city-name-inline {
-    color: #c0caf5;
+    color: #c8c2ba;
     font-size: 13px;
 }
 
 .city-names {
-    color: #565f89;
+    color: #706860;
     font-size: 11px;
     margin-top: 2px;
 }
 
 .city-time-btn:hover .city-time {
-    color: #7aa2f7;
+    color: #b89470;
 }
 
 .city-time {
-    color: #7dcfff;
+    color: #8a9878;
     font-size: 13px;
     font-weight: bold;
     margin-right: 8px;
 }
 
 .city-time-input {
-    color: #7dcfff;
+    color: #8a9878;
     font-size: 13px;
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.06);
-    border: 1px solid #7dcfff;
+    border: 1px solid #8a9878;
     border-radius: 4px;
     padding: 1px 4px;
     min-width: 60px;
@@ -109,7 +109,7 @@
 }
 
 .city-offset {
-    color: #565f89;
+    color: #706860;
     font-size: 11px;
     min-width: 50px;
 }
@@ -118,9 +118,9 @@
 .city-row.night .city-names,
 .city-row.night .city-flags,
 .city-row.night .city-time {
-    color: #565f89;
+    color: #504840;
 }
 
 .city-row.night .city-offset {
-    color: #3b4261;
+    color: #3a3430;
 }
