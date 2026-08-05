@@ -43,7 +43,7 @@
   :monitor 0
   :geometry (geometry
     :x "-60px"
-    :y "680px"
+    :y "514px"
     :width "300px"
     :height "185px"
     :anchor "top right")
@@ -56,7 +56,7 @@
   :monitor 0
   :geometry (geometry
     :x "-60px"
-    :y "869px"
+    :y "703px"
     :width "300px"
     :height "70px"
     :anchor "top right")
@@ -69,7 +69,7 @@
   :monitor 0
   :geometry (geometry
     :x "-60px"
-    :y "943px"
+    :y "777px"
     :width "300px"
     :height "55px"
     :anchor "top right")
@@ -82,7 +82,7 @@
   :monitor 0
   :geometry (geometry
     :x "-60px"
-    :y "1002px"
+    :y "836px"
     :width "300px"
     :height "55px"
     :anchor "top right")

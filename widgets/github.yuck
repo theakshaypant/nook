@@ -1,5 +1,5 @@
 (defpoll github-data
-  :interval "900s"
+  :interval "600s"
   :initial '{"total":0,"unread":0,"by_reason":{"mention":0,"review_requested":0,"assign":0,"ci_activity":0,"comment":0},"items":[],"updated":"--:--"}'
   `scripts/fetch_github.sh`)
 
@@ -35,7 +35,7 @@
 
     ;; Items
     (scroll :class "items-scroll" :vscroll true :hscroll false
-            :height 200
+            :height 150
             :visible {github-data.total > 0}
       (box :orientation "v" :space-evenly false
         (for item in {github-data.items}
@@ -55,7 +55,7 @@
     :x "-60px"
     :y "60px"
     :width "300px"
-    :height "600px"
+    :height "450px"
     :anchor "top right")
   :stacking "bottom"
   :focusable false

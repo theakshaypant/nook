@@ -3,7 +3,7 @@ set -euo pipefail
 
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/nook"
 CACHE_FILE="$CACHE_DIR/github_data.json"
-CACHE_MAX_AGE=840
+CACHE_MAX_AGE=660
 
 mkdir -p "$CACHE_DIR"
 
@@ -23,32 +23,32 @@ notif_json=$(gh api /notifications --paginate --jq '[.[] | {
     unread: .unread,
     updated: .updated_at,
     url: .subject.url
-}]' 2>/dev/null) || notif_json="[]"
+}]' 2>/dev/null) || {
+    if [[ -f "$CACHE_FILE" ]]; then
+        cat "$CACHE_FILE"
+    else
+        echo '{"total":0,"unread":0,"by_reason":{"mention":0,"review_requested":0,"assign":0,"ci_activity":0,"comment":0},"items":[],"updated":"--:--"}'
+    fi
+    exit 0
+}
 
 jq -n \
     --argjson notifs "$notif_json" \
     --arg now "$(date '+%H:%M')" \
     '($notifs | reduce .[] as $n (
-        {total: 0, unread: 0, mention: 0, review_requested: 0, assign: 0, ci_activity: 0, comment: 0};
-        .total += 1
-        | (if $n.unread then .unread += 1 else . end)
-        | if   $n.reason == "mention"          then .mention += 1
-          elif $n.reason == "review_requested" then .review_requested += 1
-          elif $n.reason == "assign"           then .assign += 1
-          elif $n.reason == "ci_activity"      then .ci_activity += 1
-          elif ($n.reason == "comment" or $n.reason == "subscribed") then .comment += 1
+        {unread: 0, by_reason: {mention: 0, review_requested: 0, assign: 0, ci_activity: 0, comment: 0}};
+        (if $n.unread then .unread += 1 else . end)
+        | if   $n.reason == "mention"          then .by_reason.mention += 1
+          elif $n.reason == "review_requested" then .by_reason.review_requested += 1
+          elif $n.reason == "assign"           then .by_reason.assign += 1
+          elif $n.reason == "ci_activity"      then .by_reason.ci_activity += 1
+          elif ($n.reason == "comment" or $n.reason == "subscribed") then .by_reason.comment += 1
           else . end
     )) as $counts |
     {
-        total: $counts.total,
+        total: ($notifs | length),
         unread: $counts.unread,
-        by_reason: {
-            mention:          $counts.mention,
-            review_requested: $counts.review_requested,
-            assign:           $counts.assign,
-            ci_activity:      $counts.ci_activity,
-            comment:          $counts.comment
-        },
+        by_reason: $counts.by_reason,
         items: [($notifs | sort_by(.updated) | reverse)[] |
             (.url | split("/") | last) as $num |
         {
