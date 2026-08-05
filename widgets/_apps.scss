@@ -21,3 +21,35 @@
     color: #9a918a;
     font-size: 11px;
 }
+
+.ctx-menu {
+    background-color: rgba(30, 26, 24, 0.85);
+    border-radius: 10px;
+    padding: 8px 10px;
+}
+
+.ctx-title {
+    color: #c8c2ba;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.ctx-divider {
+    background-color: rgba(255, 255, 255, 0.08);
+    min-height: 1px;
+    margin: 6px 0;
+}
+
+.ctx-action {
+    border-radius: 5px;
+    padding: 4px 8px;
+}
+
+.ctx-action-label {
+    color: #9a918a;
+    font-size: 12px;
+}
+
+.ctx-action:hover .ctx-action-label {
+    color: #b89470;
+}

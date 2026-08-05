@@ -3,9 +3,12 @@
   :initial '{"total":0,"apps":[],"updated":"--:--"}'
   `scripts/fetch_apps.sh`)
 
+(defvar app-context '{"name":"","actions":[],"margin_right":440}')
+
 (defwidget app-btn [name icon desktop_id]
   (button :class "app-btn"
           :onclick "gtk-launch '${desktop_id}' &"
+          :onrightclick "scripts/app_context.sh '${desktop_id}' &"
           :tooltip name
     (box :orientation "v" :space-evenly false :spacing 6
       (box :class "app-icon-wrap" :halign "center"
@@ -20,6 +23,24 @@
         (app-btn :name {app.name} :icon {app.icon}
                  :desktop_id {app.desktop_id})))))
 
+(defwidget context-action [name exec]
+  (button :class "ctx-action"
+          :onclick "${exec} & eww --config . close app-context-menu &"
+    (label :class "ctx-action-label" :text name :xalign 0)))
+
+(defwidget context-menu-widget []
+  (eventbox :onclick "eww --config . close app-context-menu &"
+    (box :hexpand true :vexpand true
+      (box :valign "start" :halign "end"
+           :style "margin-top: 373px; margin-right: ${app-context.margin_right}px;"
+        (box :class "ctx-menu" :orientation "v" :space-evenly false
+          (label :class "ctx-title" :text {app-context.name} :xalign 0)
+          (box :class "ctx-divider")
+          (scroll :vscroll true :hscroll false :height 80
+            (box :orientation "v" :space-evenly false
+              (for action in {app-context.actions}
+                (context-action :name {action.name} :exec {action.exec})))))))))
+
 (defwindow apps
   :monitor 0
   :geometry (geometry
@@ -32,3 +53,16 @@
   :focusable false
   :windowtype "desktop"
   (apps-widget))
+
+(defwindow app-context-menu
+  :monitor 0
+  :geometry (geometry
+    :x "0px"
+    :y "0px"
+    :width "3840px"
+    :height "2160px"
+    :anchor "top right")
+  :stacking "fg"
+  :focusable true
+  :windowtype "dock"
+  (context-menu-widget))
