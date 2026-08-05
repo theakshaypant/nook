@@ -1,0 +1,97 @@
+// Circular gauges
+.gauges {
+    margin: 8px 0 12px 0;
+}
+
+.gauge {
+    min-width: 130px;
+    min-height: 130px;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.gauge-cpu { color: #7aa2f7; }
+.gauge-ram { color: #7dcfff; }
+
+.gauge-inner {
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.gauge-value {
+    color: #c0caf5;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.gauge-label {
+    color: #a9b1d6;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+.gauge-sub {
+    color: #565f89;
+    font-size: 12px;
+}
+
+// Stat sections
+.stat-section {
+    margin-bottom: 8px;
+}
+
+.stat-heading {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.heading-disk    { color: #bb9af7; }
+.heading-net     { color: #9ece6a; }
+.heading-temp    { color: #7aa2f7; }
+
+// Progress bars
+.stat-progress {
+    margin-top: 4px;
+
+    trough {
+        background-color: rgba(255, 255, 255, 0.06);
+        border-radius: 3px;
+        min-height: 12px;
+    }
+
+    progress {
+        border-radius: 3px;
+        min-height: 12px;
+    }
+}
+
+.fill-purple progress { background-color: #bb9af7; }
+
+.stat-bar-value {
+    color: #c0caf5;
+    font-size: 13px;
+}
+
+// Network
+.net-up, .net-down {
+    font-size: 14px;
+}
+
+.net-up   { color: #9ece6a; }
+.net-down { color: #7dcfff; }
+
+// Temperature
+.temp-value {
+    color: #7aa2f7;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+// Footer
+.sys-footer {
+    margin-top: 4px;
+}
+
+.footer-cpu   { color: #7aa2f7; }
+.footer-os    { color: #bb9af7; }
+.footer-kern  { color: #565f89; }

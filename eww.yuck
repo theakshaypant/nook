@@ -1,1 +1,2 @@
 (include "widgets/github.yuck")
+(include "widgets/stats.yuck")

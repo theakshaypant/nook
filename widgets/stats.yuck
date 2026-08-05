@@ -1,0 +1,61 @@
+(defwidget gauge [color-class value label sub]
+  (box :orientation "v" :space-evenly false :halign "center"
+    (circular-progress :class "gauge ${color-class}" :value value
+                       :thickness 18 :start-at 75 :clockwise true
+      (box :class "gauge-inner" :valign "center" :halign "center"
+        (label :class "gauge-value" :text "${round(value, 0)}%")))
+    (label :class "gauge-label" :text label)
+    (label :class "gauge-sub" :text sub)))
+
+(defwidget stats-widget []
+  (box :class "card stats-card" :orientation "v" :space-evenly false
+
+    ;; CPU & RAM gauges
+    (box :class "gauges" :spacing 25 :halign "center"
+      (gauge :color-class "gauge-cpu" :value {EWW_CPU.avg}
+             :label "CPU" :sub "${arraylength(EWW_CPU.cores)} cores")
+      (gauge :color-class "gauge-ram" :value {EWW_RAM.used_mem_perc}
+             :label "RAM" :sub "${round(EWW_RAM.used_mem / 1073741824, 1)} / ${round(EWW_RAM.total_mem / 1073741824, 0)} GB"))
+
+    ;; Disk
+    (box :class "stat-section" :orientation "v" :space-evenly false
+      (box :space-evenly false :spacing 8
+        (image :path "assets/disk.svg" :image-width 16 :image-height 16)
+        (label :class "stat-heading heading-disk" :text "Disk")
+        (label :class "gauge-sub" :text "${round(EWW_DISK['/'].used / 1073741824, 0)} / ${round(EWW_DISK['/'].total / 1073741824, 0)} GB")
+        (label :class "stat-bar-value" :text "${round(EWW_DISK['/'].used_perc, 0)}%"))
+      (progress :class "stat-progress fill-purple" :value {EWW_DISK["/"].used_perc}))
+
+    ;; Network
+    (box :class "stat-section" :space-evenly false :spacing 8
+      (image :path "assets/network.svg" :image-width 16 :image-height 16)
+      (label :class "stat-heading heading-net" :text "Network")
+      (image :path "assets/arrow-up.svg" :image-width 12 :image-height 12)
+      (label :class "net-up" :text "${round(EWW_NET.wlp9s0f0.NET_UP / 1024, 0)} KB/s")
+      (image :path "assets/arrow-down.svg" :image-width 12 :image-height 12)
+      (label :class "net-down" :text "${round(EWW_NET.wlp9s0f0.NET_DOWN / 1024, 0)} KB/s"))
+
+    ;; Temperature
+    (box :class "stat-section" :space-evenly false :spacing 8
+      (image :path "assets/temp.svg" :image-width 16 :image-height 16)
+      (label :class "stat-heading heading-temp" :text "Temp")
+      (label :class "temp-value" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°C"))
+
+    ;; Footer
+    (box :class "sys-footer" :orientation "v" :space-evenly false :valign "end" :vexpand true
+      (label :class "footer footer-cpu" :text "Intel Core Ultra 7 165H" :xalign 1)
+      (label :class "footer footer-os" :text "Fedora 44  ·  akpant-thinkpadp1gen7" :xalign 1)
+      (label :class "footer footer-kern" :text "7.1.4-200.fc44.x86_64" :xalign 1))))
+
+(defwindow stats
+  :monitor 0
+  :geometry (geometry
+    :x "-60px"
+    :y "680px"
+    :width "300px"
+    :height "300px"
+    :anchor "top right")
+  :stacking "bottom"
+  :focusable false
+  :windowtype "desktop"
+  (stats-widget))

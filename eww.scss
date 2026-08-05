@@ -22,7 +22,6 @@ button:hover {
     border-radius: 12px;
     padding: 10px 12px;
     min-width: 300px;
-    min-height: 600px;
 }
 
 .header {
@@ -70,3 +69,4 @@ scrollbar slider:hover {
 
 // Widget styles
 @import "widgets/github";
+@import "widgets/stats";
