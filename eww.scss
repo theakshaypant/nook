@@ -1,0 +1,72 @@
+// Shared base styles
+* {
+    font-family: "Source Code Pro";
+}
+
+button {
+    background: none;
+    border: none;
+    box-shadow: none;
+    background-image: none;
+    padding: 0;
+    margin: 0;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+}
+
+.card {
+    background-color: #24283b;
+    border-radius: 12px;
+    padding: 10px 12px;
+    min-width: 300px;
+    min-height: 600px;
+}
+
+.header {
+    margin-bottom: 10px;
+}
+
+.title {
+    color: #c0caf5;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.empty-box {
+    padding: 8px 0;
+}
+
+.empty {
+    color: #c0caf5;
+    font-size: 11px;
+}
+
+.items-scroll {
+    border-radius: 6px;
+}
+
+scrollbar {
+    background: none;
+}
+
+scrollbar slider {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    min-width: 3px;
+}
+
+scrollbar slider:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.footer {
+    color: #a9b1d6;
+    font-size: 10px;
+    margin-top: 8px;
+}
+
+// Widget styles
+@import "widgets/github";

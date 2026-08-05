@@ -1,0 +1,58 @@
+.github-logo {
+    margin-top: 1px;
+}
+
+.badge {
+    color: #1a1b26;
+    background-color: #7aa2f7;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0 6px;
+    margin-left: 4px;
+    margin-top: 2px;
+}
+
+.reasons {
+    margin-bottom: 8px;
+}
+
+.reason-tag {
+    font-size: 9px;
+    border-radius: 4px;
+    padding: 1px 6px;
+}
+
+.tag-mention  { color: #f7768e; background-color: rgba(247, 118, 142, 0.12); }
+.tag-review   { color: #bb9af7; background-color: rgba(187, 154, 247, 0.12); }
+.tag-assign   { color: #e0af68; background-color: rgba(224, 175, 104, 0.12); }
+.tag-ci       { color: #9ece6a; background-color: rgba(158, 206, 106, 0.12); }
+.tag-comment  { color: #7dcfff; background-color: rgba(125, 207, 255, 0.12); }
+
+.item {
+    padding: 2px 0;
+}
+
+.item-type {
+    font-size: 9px;
+    font-weight: bold;
+    margin-right: 6px;
+}
+
+.type-PR    { color: #bb9af7; }
+.type-Issue { color: #9ece6a; }
+.type-CI    { color: #e0af68; }
+.type-Disc  { color: #7dcfff; }
+.type-Rel   { color: #f7768e; }
+
+.item-repo {
+    color: #565f89;
+    font-size: 10px;
+    margin-right: 6px;
+    min-width: 105px;
+}
+
+.item-title {
+    color: #c0caf5;
+    font-size: 10px;
+}
