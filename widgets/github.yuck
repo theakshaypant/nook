@@ -13,10 +13,9 @@
 (defwidget github-widget []
   (box :class "card" :orientation "v" :space-evenly false
     ;; Header
-    (box :class "header" :space-evenly false :spacing 8
+    (box :class "header" :space-evenly false :spacing 8 :halign "center"
       (image :class "github-logo" :path "assets/github-mark.svg"
              :image-width 20 :image-height 20)
-      (label :class "title" :text "Notifications")
       (label :class "badge" :text {github-data.unread} :visible {github-data.unread > 0}))
 
     ;; Reason summary
