@@ -1,6 +1,6 @@
 // Circular gauges
 .gauges {
-    margin: 8px 0 12px 0;
+    margin-top: 16px;
 }
 
 .gauge {
@@ -32,17 +32,6 @@
 .gauge-sub {
     color: #565f89;
     font-size: 12px;
-}
-
-// Stat sections
-.stat-section {
-    margin-bottom: 8px;
-}
-
-.stat-heading {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 4px;
 }
 
 .heading-disk    { color: #bb9af7; }
@@ -86,12 +75,3 @@
     font-size: 14px;
     font-weight: bold;
 }
-
-// Footer
-.sys-footer {
-    margin-top: 4px;
-}
-
-.footer-cpu   { color: #7aa2f7; }
-.footer-os    { color: #bb9af7; }
-.footer-kern  { color: #565f89; }
