@@ -45,6 +45,10 @@ Reuses the same Google Cloud project credentials as the calendar widget, but mai
 
 Local time plus nine cities my team is spread across. Same-timezone cities are grouped. Night hours are dimmed. Click any time to enter edit mode and preview what a given hour looks like in every zone — handy for scheduling across continents.
 
+### App Launcher
+
+A row of quick-launch buttons for up to five apps. Icons are resolved automatically from the system icon theme — just list desktop file IDs in `config.yaml` and the script finds the right icon (SVG preferred, then PNG) from hicolor, flatpak exports, or pixmaps. Click any icon to launch the app via `gtk-launch`.
+
 ---
 
 ## Running it
@@ -55,7 +59,7 @@ eww needs to be built with X11 support since GNOME doesn't support wlr-layer-she
 cargo build --release --no-default-features --features=x11
 ```
 
-Dependencies: `jq`, `curl`, [`gh`](https://cli.github.com/) (authenticated), and Google OAuth credentials for calendar and Gmail (see [tsk](https://github.com/theakshaypant/tsk)).
+Dependencies: `jq`, `curl`, `yq`, [`gh`](https://cli.github.com/) (authenticated), and Google OAuth credentials for calendar and Gmail (see [tsk](https://github.com/theakshaypant/tsk)).
 
 ```
 git clone https://github.com/theakshaypant/nook.git
@@ -95,7 +99,16 @@ watch:
     - name: "Berlin"
       timezone: "Europe/Berlin"
       flag: "🇩🇪"
+
+apps:
+  - com.slack.Slack
+  - org.gnome.Ptyxis
+  - dev.zed.Zed
+  - com.brave.Browser
+  - org.mozilla.firefox
 ```
+
+Find desktop IDs with `ls /usr/share/applications/` or `flatpak list --columns=application`.
 
 For Gmail, enable the Gmail API in your Google Cloud project and run `scripts/auth_gmail.sh` to authorize.
 
