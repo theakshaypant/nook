@@ -35,6 +35,12 @@ Set your city in `config.yaml` — location is resolved via Open-Meteo's geocodi
 
 Weather data by [Open-Meteo.com](https://open-meteo.com/) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Weather icons from [Meteocons](https://github.com/basmilius/weather-icons) (MIT).
 
+### Gmail
+
+Unread inbox emails with sender, subject, and snippet. Click any email to open it in Gmail. Uses Google OAuth with `gmail.readonly` scope — run `scripts/auth_gmail.sh` once to authorize. Refreshes every 10 minutes.
+
+Reuses the same Google Cloud project credentials as the calendar widget, but maintains its own token file.
+
 ### World Clock
 
 Local time plus nine cities my team is spread across. Same-timezone cities are grouped. Night hours are dimmed. Click any time to enter edit mode and preview what a given hour looks like in every zone — handy for scheduling across continents.
@@ -49,7 +55,7 @@ eww needs to be built with X11 support since GNOME doesn't support wlr-layer-she
 cargo build --release --no-default-features --features=x11
 ```
 
-Dependencies: `jq`, `curl`, [`gh`](https://cli.github.com/) (authenticated), and Google OAuth credentials for the calendar (see [tsk](https://github.com/theakshaypant/tsk)).
+Dependencies: `jq`, `curl`, [`gh`](https://cli.github.com/) (authenticated), and Google OAuth credentials for calendar and Gmail (see [tsk](https://github.com/theakshaypant/tsk)).
 
 ```
 git clone https://github.com/theakshaypant/nook.git
@@ -80,12 +86,18 @@ calendar:
     - id: "Team Calendar"
       name: "Team"
 
+gmail:
+  credentials_file: "~/.config/tsk/work_credentials.json"
+  token_file: "~/.config/nook/gmail_token.json"
+
 watch:
   cities:
     - name: "Berlin"
       timezone: "Europe/Berlin"
       flag: "🇩🇪"
 ```
+
+For Gmail, enable the Gmail API in your Google Cloud project and run `scripts/auth_gmail.sh` to authorize.
 
 ---
 
