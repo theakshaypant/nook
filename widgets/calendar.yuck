@@ -1,0 +1,115 @@
+(defpoll calendar-data
+  :interval "2s"
+  :initial '{"nav_date":"","date_label":"","is_today":true,"all_day":[],"has_past":0,"alerts":[],"has_alerts":false,"events":[],"total":0,"updated":"--:--"}'
+  `scripts/fetch_calendar.sh`)
+
+(defwidget cal-alert [title start meeting_link has_meeting status badge]
+  (box :class "cal-alert cal-alert-${status}" :space-evenly false :spacing 6
+    (label :class "cal-alert-badge" :text badge)
+    (label :class "cal-alert-time" :text start)
+    (label :class "cal-alert-title" :text title :hexpand true :xalign 0 :limit-width 25 :truncate true)
+    (button :class "cal-alert-join" :onclick "xdg-open '${meeting_link}' &" :visible {has_meeting}
+      (label :class "cal-alert-join-text" :text "join"))))
+
+(defwidget cal-allday-item [title calendar event_url]
+  (button :onclick "xdg-open '${event_url}' &"
+    (box :class "cal-allday" :space-evenly false
+      (label :class "cal-allday-title" :text title :hexpand true :xalign 0 :limit-width 30 :truncate true)
+      (label :class "cal-allday-cal" :text calendar))))
+
+(defwidget cal-att [name url]
+  (button :class "cal-att-btn" :onclick "xdg-open '${url}' &"
+    (box :space-evenly false :spacing 4
+      (label :class "cal-att-icon" :text "·")
+      (label :class "cal-att-name" :text name :xalign 0 :limit-width 35 :truncate true))))
+
+(defwidget cal-event [id title start end calendar meeting_link has_meeting attachments has_attachments event_url in_progress expanded]
+  (box :orientation "v" :space-evenly false
+    (box :class "cal-event ${in_progress ? 'in-progress' : ''}" :space-evenly false :spacing 0
+      (label :class "cal-time ${in_progress ? 'time-active' : ''}" :text start :width 40)
+      (button :class "cal-title-btn"
+              :onclick "f=/tmp/nook-calendar-expand; if grep -qxF '${id}' $f 2>/dev/null; then rm -f $f; else echo '${id}' > $f; fi"
+              :hexpand true
+        (label :class "cal-title" :text title :xalign 0 :limit-width 25 :truncate true))
+      (box :class "cal-join-col" :halign "center"
+        (button :class "cal-action-btn" :onclick "xdg-open '${meeting_link}' &" :visible {has_meeting}
+          (label :class "cal-join" :text "join")))
+      (box :class "cal-att-col" :halign "center"
+        (label :class "cal-att-indicator" :text "📎" :visible {has_attachments && !expanded}))
+      (label :class "cal-cal" :text calendar :xalign 1))
+    (box :class "cal-details" :orientation "v" :space-evenly false :visible {expanded}
+      (label :class "cal-detail-time" :text "${start} – ${end}" :xalign 0)
+      (for att in attachments
+        (cal-att :name {att.name} :url {att.url}))
+      (button :class "cal-detail-link" :onclick "xdg-open '${event_url}' &"
+        (label :class "cal-link-text" :text "open in calendar" :xalign 0)))))
+
+(defwidget calendar-widget []
+  (box :class "card calendar-card" :orientation "v" :space-evenly false
+    (box :class "cal-alerts" :orientation "v" :space-evenly false
+         :visible {calendar-data.has_alerts}
+      (for alert in {calendar-data.alerts}
+        (cal-alert :title {alert.title} :start {alert.start}
+                   :meeting_link {alert.meeting_link}
+                   :has_meeting {alert.has_meeting}
+                   :status {alert.status}
+                   :badge {alert.badge})))
+
+    (box :class "cal-nav" :space-evenly false :halign "center" :spacing 6
+      (button :class "cal-nav-btn"
+              :onclick "read n < /tmp/nook-calendar-nav 2>/dev/null || n=0; echo $((n - 1)) > /tmp/nook-calendar-nav"
+        (label :class "cal-nav-arrow" :text "◄"))
+      (label :class "cal-date" :text {calendar-data.date_label} :hexpand true :halign "center")
+      (label :class "cal-today-badge" :text "Today" :visible {calendar-data.is_today})
+      (button :class "cal-nav-btn"
+              :onclick "read n < /tmp/nook-calendar-nav 2>/dev/null || n=0; echo $((n + 1)) > /tmp/nook-calendar-nav"
+        (label :class "cal-nav-arrow" :text "►"))
+      (button :class "cal-reset-btn" :visible {!calendar-data.is_today}
+              :onclick "rm -f /tmp/nook-calendar-nav"
+        (label :class "cal-reset" :text "today")))
+
+    (box :class "cal-allday-section" :orientation "v" :space-evenly false
+         :visible {arraylength(calendar-data.all_day) > 0}
+      (label :class "cal-section-label" :text "All day" :xalign 0)
+      (scroll :class "cal-allday-scroll" :vscroll true :hscroll false :height 45
+        (box :orientation "v" :space-evenly false
+          (for item in {calendar-data.all_day}
+            (cal-allday-item :title {item.title} :calendar {item.calendar}
+                             :event_url {item.event_url})))))
+
+    (box :class "cal-past-box" :visible {calendar-data.has_past > 0}
+      (label :class "cal-past-label" :text "${calendar-data.has_past} passed" :xalign 0))
+
+    (scroll :class "items-scroll" :vscroll true :hscroll false
+            :vexpand true
+            :visible {arraylength(calendar-data.events) > 0}
+      (box :orientation "v" :space-evenly false
+        (for item in {calendar-data.events}
+          (cal-event :id {item.id} :title {item.title} :start {item.start}
+                     :end {item.end} :calendar {item.calendar}
+                     :meeting_link {item.meeting_link}
+                     :has_meeting {item.has_meeting}
+                     :attachments {item.attachments}
+                     :has_attachments {item.has_attachments}
+                     :event_url {item.event_url}
+                     :in_progress {item.in_progress}
+                     :expanded {item.expanded}))))
+
+    (box :visible {calendar-data.total == 0} :class "empty-box"
+      (label :class "empty" :text "No events"))
+
+    (label :class "footer" :text "${calendar-data.total} events · ${calendar-data.updated}"
+           :xalign 1)))
+
+(defwindow calendar
+  :monitor 0
+  :geometry (geometry
+    :x "-762px"
+    :y "60px"
+    :width "300px"
+    :height "450px"
+    :anchor "top right")
+  :stacking "bottom"
+  :focusable false
+  :windowtype "desktop"
+  (calendar-widget))

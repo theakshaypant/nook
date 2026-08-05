@@ -1,3 +1,4 @@
 (include "widgets/github.yuck")
 (include "widgets/stats.yuck")
 (include "widgets/watch.yuck")
+(include "widgets/calendar.yuck")
