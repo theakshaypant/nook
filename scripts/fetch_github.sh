@@ -27,7 +27,7 @@ notif_json=$(gh api /notifications --paginate --jq '[.[] | {
     if [[ -f "$CACHE_FILE" ]]; then
         cat "$CACHE_FILE"
     else
-        echo '{"total":0,"unread":0,"by_reason":{"mention":0,"review_requested":0,"assign":0,"ci_activity":0,"comment":0},"items":[],"updated":"--:--"}'
+        echo '{"total":0,"unread":0,"by_reason":{"mention":0,"team_mention":0,"review_requested":0,"approval_requested":0,"assign":0,"ci_activity":0,"comment":0,"subscribed":0,"author":0,"state_change":0,"security_alert":0,"manual":0,"invitation":0},"items":[],"updated":"--:--"}'
     fi
     exit 0
 }
@@ -36,13 +36,21 @@ jq -n \
     --argjson notifs "$notif_json" \
     --arg now "$(date '+%H:%M')" \
     '($notifs | reduce .[] as $n (
-        {unread: 0, by_reason: {mention: 0, review_requested: 0, assign: 0, ci_activity: 0, comment: 0}};
+        {unread: 0, by_reason: {mention: 0, team_mention: 0, review_requested: 0, approval_requested: 0, assign: 0, ci_activity: 0, comment: 0, subscribed: 0, author: 0, state_change: 0, security_alert: 0, manual: 0, invitation: 0}};
         (if $n.unread then .unread += 1 else . end)
-        | if   $n.reason == "mention"          then .by_reason.mention += 1
-          elif $n.reason == "review_requested" then .by_reason.review_requested += 1
-          elif $n.reason == "assign"           then .by_reason.assign += 1
-          elif $n.reason == "ci_activity"      then .by_reason.ci_activity += 1
-          elif ($n.reason == "comment" or $n.reason == "subscribed") then .by_reason.comment += 1
+        | if   $n.reason == "mention"              then .by_reason.mention += 1
+          elif $n.reason == "team_mention"         then .by_reason.team_mention += 1
+          elif $n.reason == "review_requested"     then .by_reason.review_requested += 1
+          elif $n.reason == "approval_requested"   then .by_reason.approval_requested += 1
+          elif $n.reason == "assign"               then .by_reason.assign += 1
+          elif $n.reason == "ci_activity"          then .by_reason.ci_activity += 1
+          elif $n.reason == "comment"              then .by_reason.comment += 1
+          elif $n.reason == "subscribed"           then .by_reason.subscribed += 1
+          elif $n.reason == "author"               then .by_reason.author += 1
+          elif $n.reason == "state_change"         then .by_reason.state_change += 1
+          elif $n.reason == "security_alert"       then .by_reason.security_alert += 1
+          elif $n.reason == "manual"               then .by_reason.manual += 1
+          elif $n.reason == "invitation"           then .by_reason.invitation += 1
           else . end
     )) as $counts |
     {

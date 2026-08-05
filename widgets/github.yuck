@@ -1,6 +1,6 @@
 (defpoll github-data
   :interval "600s"
-  :initial '{"total":0,"unread":0,"by_reason":{"mention":0,"review_requested":0,"assign":0,"ci_activity":0,"comment":0},"items":[],"updated":"--:--"}'
+  :initial '{"total":0,"unread":0,"by_reason":{"mention":0,"team_mention":0,"review_requested":0,"approval_requested":0,"assign":0,"ci_activity":0,"comment":0,"subscribed":0,"author":0,"state_change":0,"security_alert":0,"manual":0,"invitation":0},"items":[],"updated":"--:--"}'
   `scripts/fetch_github.sh`)
 
 (defwidget notif-item [title repo type url]
@@ -19,18 +19,35 @@
       (label :class "badge" :text {github-data.unread} :visible {github-data.unread > 0}))
 
     ;; Reason summary
-    (box :class "reasons" :space-evenly false :spacing 10
-         :visible {github-data.total > 0}
-      (label :class "reason-tag tag-mention" :text "@ ${github-data.by_reason.mention}"
-             :visible {github-data.by_reason.mention > 0})
-      (label :class "reason-tag tag-review" :text "review ${github-data.by_reason.review_requested}"
-             :visible {github-data.by_reason.review_requested > 0})
-      (label :class "reason-tag tag-assign" :text "assign ${github-data.by_reason.assign}"
-             :visible {github-data.by_reason.assign > 0})
-      (label :class "reason-tag tag-ci" :text "ci ${github-data.by_reason.ci_activity}"
-             :visible {github-data.by_reason.ci_activity > 0})
-      (label :class "reason-tag tag-comment" :text "comment ${github-data.by_reason.comment}"
-             :visible {github-data.by_reason.comment > 0}))
+    (scroll :hscroll true :vscroll false
+            :visible {github-data.total > 0}
+      (box :class "reasons" :space-evenly false :spacing 10 :halign "center"
+        (label :class "reason-tag tag-mention" :text "@ ${github-data.by_reason.mention}"
+               :visible {github-data.by_reason.mention > 0})
+        (label :class "reason-tag tag-mention" :text "team @ ${github-data.by_reason.team_mention}"
+               :visible {github-data.by_reason.team_mention > 0})
+        (label :class "reason-tag tag-review" :text "review ${github-data.by_reason.review_requested}"
+               :visible {github-data.by_reason.review_requested > 0})
+        (label :class "reason-tag tag-review" :text "approval ${github-data.by_reason.approval_requested}"
+               :visible {github-data.by_reason.approval_requested > 0})
+        (label :class "reason-tag tag-assign" :text "assign ${github-data.by_reason.assign}"
+               :visible {github-data.by_reason.assign > 0})
+        (label :class "reason-tag tag-ci" :text "ci ${github-data.by_reason.ci_activity}"
+               :visible {github-data.by_reason.ci_activity > 0})
+        (label :class "reason-tag tag-comment" :text "comment ${github-data.by_reason.comment}"
+               :visible {github-data.by_reason.comment > 0})
+        (label :class "reason-tag tag-comment" :text "subscribed ${github-data.by_reason.subscribed}"
+               :visible {github-data.by_reason.subscribed > 0})
+        (label :class "reason-tag tag-comment" :text "author ${github-data.by_reason.author}"
+               :visible {github-data.by_reason.author > 0})
+        (label :class "reason-tag tag-ci" :text "state ${github-data.by_reason.state_change}"
+               :visible {github-data.by_reason.state_change > 0})
+        (label :class "reason-tag tag-assign" :text "security ${github-data.by_reason.security_alert}"
+               :visible {github-data.by_reason.security_alert > 0})
+        (label :class "reason-tag tag-comment" :text "manual ${github-data.by_reason.manual}"
+               :visible {github-data.by_reason.manual > 0})
+        (label :class "reason-tag tag-review" :text "invite ${github-data.by_reason.invitation}"
+               :visible {github-data.by_reason.invitation > 0})))
 
     ;; Items
     (scroll :class "items-scroll" :vscroll true :hscroll false
