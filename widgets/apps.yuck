@@ -1,0 +1,34 @@
+(defpoll apps-data
+  :interval "86400s"
+  :initial '{"total":0,"apps":[],"updated":"--:--"}'
+  `scripts/fetch_apps.sh`)
+
+(defwidget app-btn [name icon desktop_id]
+  (button :class "app-btn"
+          :onclick "gtk-launch '${desktop_id}' &"
+          :tooltip name
+    (box :orientation "v" :space-evenly false :spacing 6
+      (box :class "app-icon-wrap" :halign "center"
+        (image :class "app-icon" :path icon
+               :image-width 50 :image-height 50))
+      (label :class "app-name" :text name :limit-width 8 :truncate true))))
+
+(defwidget apps-widget []
+  (box :class "card" :orientation "v" :space-evenly false :vexpand true
+    (box :class "apps-row" :halign "center" :valign "center" :space-evenly true :hexpand true :vexpand true
+      (for app in {apps-data.apps}
+        (app-btn :name {app.name} :icon {app.icon}
+                 :desktop_id {app.desktop_id})))))
+
+(defwindow apps
+  :monitor 0
+  :geometry (geometry
+    :x "-440px"
+    :y "483px"
+    :width "440px"
+    :height "128px"
+    :anchor "top right")
+  :stacking "bottom"
+  :focusable false
+  :windowtype "desktop"
+  (apps-widget))

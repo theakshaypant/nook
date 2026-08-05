@@ -4,3 +4,4 @@
 (include "widgets/calendar.yuck")
 (include "widgets/weather.yuck")
 (include "widgets/gmail.yuck")
+(include "widgets/apps.yuck")

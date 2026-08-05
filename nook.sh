@@ -6,7 +6,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-WINDOWS=(github stats-gauges stats-disk stats-net stats-temp watch calendar weather gmail)
+WINDOWS=(github stats-gauges stats-disk stats-net stats-temp watch calendar weather gmail apps)
 
 command -v eww &>/dev/null || { echo "eww not found in PATH"; exit 1; }
 

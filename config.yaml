@@ -1,3 +1,21 @@
+weather:
+  city: "Dehradun"
+
+gmail:
+  credentials_file: "~/.config/tsk/work_credentials.json"
+  token_file: "~/.config/nook/gmail_token.json"
+
+calendar:
+  credentials_file: "~/.config/tsk/work_credentials.json"
+  token_file: "~/.config/tsk/work_token.json"
+  calendars:
+    - id: "akpant@redhat.com"
+      name: "Me"
+    - id: "OpenShift Pipelines"
+      name: "OSP"
+    - id: "eedri-all"
+      name: "SF"
+
 watch:
   cities:
     - name: "Raleigh"
@@ -9,8 +27,8 @@ watch:
     - name: "Nice"
       timezone: "Europe/Paris"
       flag: "🇫🇷"
-    - name: "Tel Aviv"
-      timezone: "Asia/Tel_Aviv"
+    - name: "Raanana"
+      timezone: "Asia/Jerusalem"
       flag: "🇮🇱"
     - name: "Brno"
       timezone: "Europe/Prague"
@@ -21,9 +39,16 @@ watch:
     - name: "Berlin"
       timezone: "Europe/Berlin"
       flag: "🇩🇪"
-    - name: "Los Angeles"
-      timezone: "America/Los_Angeles"
-      flag: "🇺🇸"
+    - name: "London"
+      timezone: "Europe/London"
+      flag: "🇬🇧"
     - name: "Melbourne"
       timezone: "Australia/Melbourne"
       flag: "🇦🇺"
+
+apps:
+  - com.slack.Slack
+  - org.gnome.Ptyxis
+  - dev.zed.Zed
+  - com.brave.Browser
+  - org.mozilla.firefox
