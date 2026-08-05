@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# Usage: ./nook.sh start|stop
+# Usage: ./nook.sh start|stop|clear-cache
 # Requires: eww in PATH (built with --features=x11)
-#   start — kills any running instance, then opens all widgets
-#   stop  — kills eww and closes all widgets
+#   start       — kills any running instance, then opens all widgets
+#   stop        — kills eww and closes all widgets
+#   clear-cache — removes all cached widget data
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -23,8 +24,12 @@ case "${1:-}" in
     stop)
         eww --config "$SCRIPT_DIR" kill 2>/dev/null || true
         ;;
+    clear-cache)
+        rm -rf "${XDG_CACHE_HOME:-$HOME/.cache}/nook"
+        echo "Cache cleared"
+        ;;
     *)
-        echo "Usage: $(basename "$0") start|stop"
+        echo "Usage: $(basename "$0") start|stop|clear-cache"
         exit 1
         ;;
 esac

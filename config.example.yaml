@@ -1,0 +1,31 @@
+weather:
+  city: "Berlin"
+
+gmail:
+  credentials_file: "~/.config/tsk/work_credentials.json"
+  token_file: "~/.config/nook/gmail_token.json"
+
+calendar:
+  credentials_file: "~/.config/tsk/work_credentials.json"
+  token_file: "~/.config/tsk/work_token.json"
+  calendars:
+    - id: "user@example.com"
+      name: "Work"
+    - id: "Team Calendar"
+      name: "Team"
+
+watch:
+  cities:
+    - name: "Berlin"
+      timezone: "Europe/Berlin"
+      flag: "🇩🇪"
+    - name: "New York"
+      timezone: "America/New_York"
+      flag: "🇺🇸"
+
+apps:
+  - com.slack.Slack
+  - org.gnome.Ptyxis
+  - dev.zed.Zed
+  - com.brave.Browser
+  - org.mozilla.firefox

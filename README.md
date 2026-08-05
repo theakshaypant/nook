@@ -75,7 +75,7 @@ To stop everything:
 
 ### Configuration
 
-Copy `config.yaml` and adjust:
+Copy the example config and adjust:
 
 ```yaml
 weather:
