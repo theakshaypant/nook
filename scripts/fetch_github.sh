@@ -7,7 +7,7 @@ CACHE_MAX_AGE=660
 
 mkdir -p "$CACHE_DIR"
 
-if [[ -f "$CACHE_FILE" ]]; then
+if [[ "${NOOK_FORCE:-}" != 1 && -f "$CACHE_FILE" ]]; then
     age=$(( $(date +%s) - $(stat -c %Y "$CACHE_FILE") ))
     if (( age < CACHE_MAX_AGE )); then
         cat "$CACHE_FILE"

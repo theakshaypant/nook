@@ -76,6 +76,15 @@ scrollbar slider:hover {
     margin-top: 2px;
 }
 
+.reload-icon {
+    color: #706860;
+    font-size: 12px;
+}
+
+.reload-btn:hover .reload-icon {
+    color: #b89470;
+}
+
 .footer {
     color: #9a918a;
     font-size: 10px;

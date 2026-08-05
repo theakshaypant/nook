@@ -46,7 +46,11 @@
       (label :class "empty" :text "All clear"))
 
     ;; Footer
-    (label :class "footer" :text "${github-data.total} total  ·  ${github-data.updated}" :xalign 1 :valign "end" :vexpand true)))
+    (box :class "footer" :space-evenly false :valign "end" :vexpand true
+      (button :class "reload-btn" :onclick "scripts/reload.sh github &"
+        (label :class "reload-icon" :text "↻"))
+      (label :text "${github-data.total} total  ·  ${github-data.updated}"
+             :hexpand true :xalign 1))))
 
 (defwindow github
   :monitor 0

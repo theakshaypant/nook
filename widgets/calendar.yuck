@@ -98,8 +98,11 @@
     (box :visible {calendar-data.total == 0} :class "empty-box"
       (label :class "empty" :text "No events"))
 
-    (label :class "footer" :text "${calendar-data.total} events · ${calendar-data.updated}"
-           :xalign 1)))
+    (box :class "footer" :space-evenly false
+      (button :class "reload-btn" :onclick "scripts/reload.sh calendar &"
+        (label :class "reload-icon" :text "↻"))
+      (label :text "${calendar-data.total} events · ${calendar-data.updated}"
+             :hexpand true :xalign 1))))
 
 (defwindow calendar
   :monitor 0

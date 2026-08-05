@@ -38,8 +38,11 @@
       (label :class "empty" :text "Inbox zero"))
 
     ;; Footer
-    (label :class "footer" :text "${gmail-data.total} unread · ${gmail-data.updated}"
-           :xalign 1 :valign "end" :vexpand true)))
+    (box :class "footer" :space-evenly false :valign "end" :vexpand true
+      (button :class "reload-btn" :onclick "scripts/reload.sh gmail &"
+        (label :class "reload-icon" :text "↻"))
+      (label :text "${gmail-data.total} unread · ${gmail-data.updated}"
+             :hexpand true :xalign 1))))
 
 (defwindow gmail
   :monitor 0

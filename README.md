@@ -14,12 +14,12 @@ Working across multiple time zones, calendars, and GitHub repos daily; instead o
 
 ### GitHub Notifications
 
-Pulls notifications from `gh` CLI and groups them by reason — mentions, review requests, assignments, CI failures. Click any item to open it in the browser. Refreshes every 15 minutes.
+Pulls notifications from `gh` CLI and groups them by reason — mentions, review requests, assignments, CI failures. Click any item to open it in the browser. Refreshes every 10 minutes, or click ↻ to reload immediately.
 
 ### Google Calendar
 
 
-Aggregates events across my work calendars. Past events collapse into a count so current and upcoming meetings stay at the top. Events starting soon get an alert banner with a countdown and a one-click join button. Clicking a title expands it to show the time range, attachments, and a link to the full event. Navigate days with arrow buttons or jump back to today.
+Aggregates events across my work calendars. Past events collapse into a count so current and upcoming meetings stay at the top. Events starting soon get an alert banner with a countdown and a one-click join button. Clicking a title expands it to show the time range, attachments, and a link to the full event. Navigate days with arrow buttons or jump back to today. Click ↻ to reload immediately.
 
 Reuses OAuth credentials from [tsk](https://github.com/theakshaypant/tsk), my CLI task manager.
 
@@ -37,7 +37,7 @@ Weather data by [Open-Meteo.com](https://open-meteo.com/) ([CC BY 4.0](https://c
 
 ### Gmail
 
-Unread inbox emails with sender, subject, and snippet. Click any email to open it in Gmail. Uses Google OAuth with `gmail.readonly` scope — run `scripts/auth_gmail.sh` once to authorize. Refreshes every 10 minutes.
+Unread inbox emails with sender, subject, and snippet. Click any email to open it in Gmail. Uses Google OAuth with `gmail.readonly` scope — run `scripts/auth_gmail.sh` once to authorize. Refreshes every 10 minutes, or click ↻ to reload immediately.
 
 Reuses the same Google Cloud project credentials as the calendar widget, but maintains its own token file.
 

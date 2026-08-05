@@ -112,7 +112,7 @@ resolve_calendar_ids() {
 }
 
 need_refresh=true
-if [[ -f "$RAW_CACHE" ]]; then
+if [[ "${NOOK_FORCE:-}" != 1 && -f "$RAW_CACHE" ]]; then
     age=$(( $(date +%s) - $(stat -c %Y "$RAW_CACHE") ))
     (( age < RAW_MAX_AGE )) && need_refresh=false
 fi
