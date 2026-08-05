@@ -1,0 +1,71 @@
+(defpoll weather-data
+  :interval "900s"
+  :initial '{"city":"--","temp":0,"feels_like":0,"high":0,"low":0,"condition":"--","icon":"","icon_gif":"overcast","humidity":0,"wind":0,"uv":0,"pressure":0,"theme":"cloudy","temp_class":"mild","hourly":[],"updated":"--:--"}'
+  `scripts/fetch_weather.sh`)
+
+(defwidget weather-hour [time temp icon temp_class]
+  (box :class "wh-item" :orientation "v" :space-evenly false :spacing 2
+    (label :class "wh-time" :text time)
+    (label :class "wh-icon" :text icon)
+    (label :class "wh-temp temp-${temp_class}" :text "${temp}°")))
+
+(defwidget weather-widget []
+  (box :class "card weather-card weather-${weather-data.theme}" :orientation "v" :space-evenly false
+    ;; City
+    (box :halign "center" :space-evenly false :spacing 4
+      (label :class "weather-city-pin" :text "📍")
+      (label :class "weather-city" :text {weather-data.city}))
+
+    ;; Hero — animated GIF behind temperature
+    (overlay
+      (box :halign "center" :valign "center"
+        (image :class "weather-icon-bg" :path "assets/weather/${weather-data.icon_gif}.gif"
+               :image-width 250 :image-height 250))
+      (box :orientation "v" :space-evenly false :valign "center"
+        (label :class "weather-temp temp-${weather-data.temp_class}" :text "${weather-data.temp}°" :halign "center")
+        (label :class "weather-condition" :text {weather-data.condition} :halign "center")))
+
+    ;; High / Low / Feels like
+    (box :class "weather-hilo" :space-evenly true
+      (label :class "weather-hilo-item" :text "H ${weather-data.high}°")
+      (label :class "weather-hilo-item" :text "L ${weather-data.low}°")
+      (label :class "weather-feels" :text "Feels ${weather-data.feels_like}°"))
+
+    ;; Stats
+    (box :class "weather-stats" :space-evenly true
+      (box :space-evenly false :spacing 3 :halign "center"
+        (label :class "weather-stat-icon" :text "💨")
+        (label :class "weather-stat" :text "${weather-data.wind}"))
+      (box :space-evenly false :spacing 3 :halign "center"
+        (label :class "weather-stat-icon" :text "💧")
+        (label :class "weather-stat" :text "${weather-data.humidity}%"))
+      (box :space-evenly false :spacing 3 :halign "center"
+        (label :class "weather-stat-icon" :text "☀")
+        (label :class "weather-stat" :text "${weather-data.uv}"))
+      (box :space-evenly false :spacing 3 :halign "center"
+        (label :class "weather-stat-icon" :text "🌡")
+        (label :class "weather-stat" :text "${weather-data.pressure}")))
+
+    ;; Hourly forecast
+    (scroll :class "weather-hourly-scroll" :hscroll true :vscroll false
+            :visible {arraylength(weather-data.hourly) > 0}
+      (box :class "weather-hourly" :orientation "h" :spacing 4 :space-evenly false
+        (for item in {weather-data.hourly}
+          (weather-hour :time {item.time} :temp {item.temp}
+                        :icon {item.icon} :temp_class {item.temp_class}))))
+
+    ;; Footer
+    (label :class "footer" :text "Updated ${weather-data.updated}" :xalign 1 :vexpand true :valign "end")))
+
+(defwindow weather
+  :monitor 0
+  :geometry (geometry
+    :x "-1200px"
+    :y "60px"
+    :width "300px"
+    :height "450px"
+    :anchor "top right")
+  :stacking "bottom"
+  :focusable false
+  :windowtype "desktop"
+  (weather-widget))

@@ -1,0 +1,160 @@
+// Condition themes — background shifts based on weather + time of day
+.weather-clear-day {
+    background-color: #2d2520;
+}
+
+.weather-clear-night {
+    background-color: #1a1a24;
+}
+
+.weather-cloudy {
+    background-color: #252525;
+}
+
+.weather-cloudy-night {
+    background-color: #1c1c22;
+}
+
+.weather-rain {
+    background-color: #202428;
+}
+
+.weather-rain-night {
+    background-color: #181c20;
+}
+
+.weather-snow {
+    background-color: #262830;
+}
+
+.weather-snow-night {
+    background-color: #1c1e26;
+}
+
+.weather-storm {
+    background-color: #221a28;
+}
+
+.weather-storm-night {
+    background-color: #1a1420;
+}
+
+.weather-fog {
+    background-color: #242422;
+}
+
+.weather-fog-night {
+    background-color: #1c1c1a;
+}
+
+// Temperature color classes
+.temp-cold {
+    color: #9a918a;
+}
+
+.temp-cool {
+    color: #8a9878;
+}
+
+.temp-mild {
+    color: #c8c2ba;
+}
+
+.temp-warm {
+    color: #b89470;
+}
+
+.temp-hot {
+    color: #b07868;
+}
+
+// City
+.weather-city-pin {
+    font-size: 13px;
+}
+
+.weather-city {
+    color: #706860;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+// Animated GIF behind temperature
+.weather-icon-bg {
+    opacity: 0.2;
+    margin: -8px 0;
+}
+
+// Hero temperature
+.weather-temp {
+    font-size: 48px;
+    font-weight: 900;
+}
+
+// Condition
+.weather-condition {
+    color: #9a918a;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+// High / Low / Feels like
+.weather-hilo {
+    margin-bottom: 12px;
+}
+
+.weather-hilo-item {
+    color: #706860;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.weather-feels {
+    color: #706860;
+    font-size: 11px;
+}
+
+// Stats
+.weather-stats {
+    padding: 8px 0;
+    border-top: 1px solid rgba(200, 194, 186, 0.08);
+    border-bottom: 1px solid rgba(200, 194, 186, 0.08);
+    margin-bottom: 8px;
+}
+
+.weather-stat-icon {
+    font-size: 12px;
+}
+
+.weather-stat {
+    color: #9a918a;
+    font-size: 11px;
+}
+
+// Hourly forecast
+.weather-hourly-scroll {
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.wh-item {
+    padding: 4px 6px;
+    border-radius: 4px;
+    min-width: 36px;
+}
+
+.wh-time {
+    color: #706860;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.wh-icon {
+    font-size: 14px;
+}
+
+.wh-temp {
+    font-size: 11px;
+    font-weight: bold;
+}
