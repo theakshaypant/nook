@@ -14,8 +14,9 @@
   (box :class "card" :orientation "v" :space-evenly false
     ;; Header
     (box :class "header" :space-evenly false :spacing 10 :halign "center"
-      (image :class "github-logo" :path "assets/github-mark.svg"
-             :image-width 25 :image-height 25)
+      (button :class "logo-btn" :onclick "xdg-open 'https://github.com' &"
+        (image :class "github-logo" :path "assets/github-mark.svg"
+               :image-width 25 :image-height 25))
       (label :class "badge" :text {github-data.unread} :visible {github-data.unread > 0}))
 
     ;; Reason summary

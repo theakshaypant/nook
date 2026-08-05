@@ -17,8 +17,9 @@
   (box :class "card" :orientation "v" :space-evenly false
     ;; Header
     (box :class "header" :space-evenly false :spacing 10 :halign "center"
-      (image :class "gmail-logo" :path "assets/gmail.svg"
-             :image-width 25 :image-height 25)
+      (button :class "logo-btn" :onclick "xdg-open 'https://mail.google.com' &"
+        (image :class "gmail-logo" :path "assets/gmail.svg"
+               :image-width 25 :image-height 25))
       (label :class "badge" :text {gmail-data.total} :visible {gmail-data.total > 0}))
 
     ;; Email list
