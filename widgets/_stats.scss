@@ -1,11 +1,11 @@
 // Circular gauges
 .gauges {
-    margin-top: 16px;
+    margin-top: 20px;
 }
 
 .gauge {
-    min-width: 130px;
-    min-height: 130px;
+    min-width: 163px;
+    min-height: 163px;
     background-color: rgba(255, 255, 255, 0.08);
 }
 
@@ -13,25 +13,25 @@
 .gauge-ram { color: #8a9878; }
 
 .gauge-inner {
-    min-width: 100px;
-    min-height: 100px;
+    min-width: 125px;
+    min-height: 125px;
 }
 
 .gauge-value {
     color: #c8c2ba;
-    font-size: 18px;
+    font-size: 23px;
     font-weight: bold;
 }
 
 .gauge-label {
     color: #9a918a;
-    font-size: 14px;
-    margin-top: 6px;
+    font-size: 18px;
+    margin-top: 8px;
 }
 
 .gauge-sub {
     color: #706860;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .heading-disk    { color: #9a8478; }
@@ -40,17 +40,17 @@
 
 // Progress bars
 .stat-progress {
-    margin-top: 4px;
+    margin-top: 5px;
 
     trough {
         background-color: rgba(255, 255, 255, 0.06);
-        border-radius: 3px;
-        min-height: 12px;
+        border-radius: 4px;
+        min-height: 15px;
     }
 
     progress {
-        border-radius: 3px;
-        min-height: 12px;
+        border-radius: 4px;
+        min-height: 15px;
     }
 }
 
@@ -58,12 +58,12 @@
 
 .stat-bar-value {
     color: #c8c2ba;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 // Network
 .net-up, .net-down {
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .net-up   { color: #8fa07a; }
@@ -72,6 +72,6 @@
 // Temperature
 .temp-value {
     color: #b89470;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
 }

@@ -70,91 +70,91 @@
 
 // City
 .weather-city-pin {
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .weather-city {
     color: #706860;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: bold;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
 // Animated GIF behind temperature
 .weather-icon-bg {
     opacity: 0.2;
-    margin: -8px 0;
+    margin: -10px 0;
 }
 
 // Hero temperature
 .weather-temp {
-    font-size: 48px;
+    font-size: 60px;
     font-weight: 900;
 }
 
 // Condition
 .weather-condition {
     color: #9a918a;
-    font-size: 12px;
-    margin-bottom: 4px;
+    font-size: 15px;
+    margin-bottom: 5px;
 }
 
 // High / Low / Feels like
 .weather-hilo {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .weather-hilo-item {
     color: #706860;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: bold;
 }
 
 .weather-feels {
     color: #706860;
-    font-size: 11px;
+    font-size: 14px;
 }
 
 // Stats
 .weather-stats {
-    padding: 8px 0;
+    padding: 10px 0;
     border-top: 1px solid rgba(200, 194, 186, 0.08);
     border-bottom: 1px solid rgba(200, 194, 186, 0.08);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .weather-stat-icon {
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .weather-stat {
     color: #9a918a;
-    font-size: 11px;
+    font-size: 14px;
 }
 
 // Hourly forecast
 .weather-hourly-scroll {
-    border-radius: 4px;
-    margin-top: 4px;
+    border-radius: 5px;
+    margin-top: 5px;
 }
 
 .wh-item {
-    padding: 4px 6px;
-    border-radius: 4px;
-    min-width: 36px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    min-width: 45px;
 }
 
 .wh-time {
     color: #706860;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: bold;
 }
 
 .wh-icon {
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .wh-temp {
-    font-size: 11px;
+    font-size: 14px;
     font-weight: bold;
 }

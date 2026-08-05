@@ -1,6 +1,6 @@
 .local-row {
-    padding: 8px 0;
-    margin-bottom: 8px;
+    padding: 10px 0;
+    margin-bottom: 10px;
     border-bottom: 1px solid rgba(200, 194, 186, 0.08);
 }
 
@@ -10,22 +10,22 @@
 
 .local-time-input {
     color: #b89470;
-    font-size: 28px;
+    font-size: 35px;
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.06);
     border: 1px solid #b89470;
-    border-radius: 6px;
-    padding: 2px 8px;
-    min-width: 120px;
+    border-radius: 8px;
+    padding: 3px 10px;
+    min-width: 150px;
 }
 
 .reset-btn {
-    margin-left: 4px;
+    margin-left: 5px;
 }
 
 .reset-label {
     color: #706860;
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .reset-btn:hover .reset-label {
@@ -34,31 +34,31 @@
 
 .local-time {
     color: #b89470;
-    font-size: 28px;
+    font-size: 35px;
     font-weight: bold;
 }
 
 .local-date {
     color: #9a918a;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .local-tz {
     color: #706860;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .city-edit-row {
-    padding: 6px 0;
+    padding: 8px 0;
 }
 
 .city-edit-label {
     color: #706860;
-    font-size: 11px;
+    font-size: 14px;
 }
 
 .city-row {
-    padding: 6px 0;
+    padding: 8px 0;
 }
 
 .city-row.editing .city-time {
@@ -66,23 +66,23 @@
 }
 
 .city-flags {
-    font-size: 14px;
-    margin-right: 8px;
+    font-size: 18px;
+    margin-right: 10px;
 }
 
 .watch-card {
-    min-width: 328px;
+    min-width: 410px;
 }
 
 .city-name-inline {
     color: #c8c2ba;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .city-names {
     color: #706860;
-    font-size: 11px;
-    margin-top: 2px;
+    font-size: 14px;
+    margin-top: 3px;
 }
 
 .city-time-btn:hover .city-time {
@@ -91,27 +91,27 @@
 
 .city-time {
     color: #8a9878;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: bold;
-    margin-right: 8px;
+    margin-right: 10px;
 }
 
 .city-time-input {
     color: #8a9878;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.06);
     border: 1px solid #8a9878;
-    border-radius: 4px;
-    padding: 1px 4px;
-    min-width: 60px;
-    margin-right: 8px;
+    border-radius: 5px;
+    padding: 1px 5px;
+    min-width: 75px;
+    margin-right: 10px;
 }
 
 .city-offset {
     color: #706860;
-    font-size: 11px;
-    min-width: 50px;
+    font-size: 14px;
+    min-width: 63px;
 }
 
 .city-row.night .city-name-inline,

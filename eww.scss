@@ -18,37 +18,37 @@ button {
 
 button:hover {
     background-color: rgba(255, 255, 255, 0.06);
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .card {
     background-color: #262220;
-    border-radius: 12px;
-    padding: 10px 12px;
-    min-width: 300px;
+    border-radius: 15px;
+    padding: 13px 15px;
+    min-width: 375px;
 }
 
 .header {
-    margin-bottom: 10px;
+    margin-bottom: 13px;
 }
 
 .title {
     color: #c8c2ba;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
 }
 
 .empty-box {
-    padding: 8px 0;
+    padding: 10px 0;
 }
 
 .empty {
     color: #c8c2ba;
-    font-size: 11px;
+    font-size: 14px;
 }
 
 .items-scroll {
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 scrollbar {
@@ -57,8 +57,8 @@ scrollbar {
 
 scrollbar slider {
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    min-width: 3px;
+    border-radius: 5px;
+    min-width: 4px;
 }
 
 scrollbar slider:hover {
@@ -68,17 +68,17 @@ scrollbar slider:hover {
 .badge {
     color: #262220;
     background-color: #b89470;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: bold;
-    border-radius: 10px;
-    padding: 0 6px;
-    margin-left: 4px;
-    margin-top: 2px;
+    border-radius: 13px;
+    padding: 0 8px;
+    margin-left: 5px;
+    margin-top: 3px;
 }
 
 .reload-icon {
     color: #706860;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .reload-btn:hover .reload-icon {
@@ -87,8 +87,8 @@ scrollbar slider:hover {
 
 .footer {
     color: #9a918a;
-    font-size: 10px;
-    margin-top: 8px;
+    font-size: 13px;
+    margin-top: 10px;
 }
 
 // Widget styles

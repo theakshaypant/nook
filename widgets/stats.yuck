@@ -1,7 +1,7 @@
 (defwidget gauge [color-class value label sub]
   (box :orientation "v" :space-evenly false :halign "center"
     (circular-progress :class "gauge ${color-class}" :value value
-                       :thickness 18 :start-at 75 :clockwise true
+                       :thickness 23 :start-at 75 :clockwise true
       (box :class "gauge-inner" :valign "center" :halign "center"
         (label :class "gauge-value" :text "${round(value, 0)}%")))
     (label :class "gauge-label" :text label)
@@ -9,7 +9,7 @@
 
 (defwidget gauges-widget []
   (box :class "card" :orientation "v" :space-evenly false
-    (box :class "gauges" :spacing 45 :halign "center"
+    (box :class "gauges" :spacing 56 :halign "center"
       (gauge :color-class "gauge-cpu" :value {EWW_CPU.avg}
              :label "CPU" :sub "${arraylength(EWW_CPU.cores)} cores")
       (gauge :color-class "gauge-ram" :value {EWW_RAM.used_mem_perc}
@@ -17,35 +17,35 @@
 
 (defwidget disk-widget []
   (box :class "card" :orientation "v" :space-evenly false
-    (box :space-evenly false :spacing 8
-      (image :path "assets/disk.svg" :image-width 16 :image-height 16)
+    (box :space-evenly false :spacing 10
+      (image :path "assets/disk.svg" :image-width 20 :image-height 20)
       (label :class "title heading-disk" :text "Disk")
       (label :class "gauge-sub" :text "${round(EWW_DISK['/'].used / 1073741824, 0)} / ${round(EWW_DISK['/'].total / 1073741824, 0)} GB")
       (label :class "stat-bar-value" :text "${round(EWW_DISK['/'].used_perc, 0)}%"))
     (progress :class "stat-progress fill-purple" :value {EWW_DISK["/"].used_perc})))
 
 (defwidget net-widget []
-  (box :class "card" :space-evenly false :spacing 8
-    (image :path "assets/network.svg" :image-width 16 :image-height 16)
+  (box :class "card" :space-evenly false :spacing 10
+    (image :path "assets/network.svg" :image-width 20 :image-height 20)
     (label :class "title heading-net" :text "Network")
-    (image :path "assets/arrow-up.svg" :image-width 12 :image-height 12)
+    (image :path "assets/arrow-up.svg" :image-width 15 :image-height 15)
     (label :class "net-up" :text "${round(EWW_NET.wlp9s0f0.NET_UP / 1024, 0)} KB/s")
-    (image :path "assets/arrow-down.svg" :image-width 12 :image-height 12)
+    (image :path "assets/arrow-down.svg" :image-width 15 :image-height 15)
     (label :class "net-down" :text "${round(EWW_NET.wlp9s0f0.NET_DOWN / 1024, 0)} KB/s")))
 
 (defwidget temp-widget []
-  (box :class "card" :space-evenly false :spacing 8
-    (image :path "assets/temp.svg" :image-width 16 :image-height 16)
+  (box :class "card" :space-evenly false :spacing 10
+    (image :path "assets/temp.svg" :image-width 20 :image-height 20)
     (label :class "title heading-temp" :text "Temp")
     (label :class "temp-value" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°C")))
 
 (defwindow stats-gauges
   :monitor 0
   :geometry (geometry
-    :x "-60px"
-    :y "514px"
-    :width "300px"
-    :height "185px"
+    :x "-25px"
+    :y "623px"
+    :width "375px"
+    :height "231px"
     :anchor "top right")
   :stacking "bottom"
   :focusable false
@@ -55,10 +55,10 @@
 (defwindow stats-disk
   :monitor 0
   :geometry (geometry
-    :x "-60px"
-    :y "703px"
-    :width "300px"
-    :height "70px"
+    :x "-25px"
+    :y "864px"
+    :width "375px"
+    :height "88px"
     :anchor "top right")
   :stacking "bottom"
   :focusable false
@@ -68,10 +68,10 @@
 (defwindow stats-net
   :monitor 0
   :geometry (geometry
-    :x "-60px"
-    :y "777px"
-    :width "300px"
-    :height "55px"
+    :x "-25px"
+    :y "962px"
+    :width "375px"
+    :height "69px"
     :anchor "top right")
   :stacking "bottom"
   :focusable false
@@ -81,10 +81,10 @@
 (defwindow stats-temp
   :monitor 0
   :geometry (geometry
-    :x "-60px"
-    :y "836px"
-    :width "300px"
-    :height "55px"
+    :x "-25px"
+    :y "1041px"
+    :width "375px"
+    :height "69px"
     :anchor "top right")
   :stacking "bottom"
   :focusable false

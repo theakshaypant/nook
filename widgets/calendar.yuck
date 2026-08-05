@@ -4,7 +4,7 @@
   `scripts/fetch_calendar.sh`)
 
 (defwidget cal-alert [title start meeting_link has_meeting status badge]
-  (box :class "cal-alert cal-alert-${status}" :space-evenly false :spacing 6
+  (box :class "cal-alert cal-alert-${status}" :space-evenly false :spacing 8
     (label :class "cal-alert-badge" :text badge)
     (label :class "cal-alert-time" :text start)
     (label :class "cal-alert-title" :text title :hexpand true :xalign 0 :limit-width 25 :truncate true)
@@ -19,14 +19,14 @@
 
 (defwidget cal-att [name url]
   (button :class "cal-att-btn" :onclick "xdg-open '${url}' &"
-    (box :space-evenly false :spacing 4
+    (box :space-evenly false :spacing 5
       (label :class "cal-att-icon" :text "·")
       (label :class "cal-att-name" :text name :xalign 0 :limit-width 35 :truncate true))))
 
 (defwidget cal-event [id title start end calendar meeting_link has_meeting attachments has_attachments event_url in_progress expanded]
   (box :orientation "v" :space-evenly false
     (box :class "cal-event ${in_progress ? 'in-progress' : ''}" :space-evenly false :spacing 0
-      (label :class "cal-time ${in_progress ? 'time-active' : ''}" :text start :width 40)
+      (label :class "cal-time ${in_progress ? 'time-active' : ''}" :text start :width 50)
       (button :class "cal-title-btn"
               :onclick "f=/tmp/nook-calendar-expand; if grep -qxF '${id}' $f 2>/dev/null; then rm -f $f; else echo '${id}' > $f; fi"
               :hexpand true
@@ -55,7 +55,7 @@
                    :status {alert.status}
                    :badge {alert.badge})))
 
-    (box :class "cal-nav" :space-evenly false :halign "center" :spacing 6
+    (box :class "cal-nav" :space-evenly false :halign "center" :spacing 8
       (button :class "cal-nav-btn"
               :onclick "read n < /tmp/nook-calendar-nav 2>/dev/null || n=0; echo $((n - 1)) > /tmp/nook-calendar-nav"
         (label :class "cal-nav-arrow" :text "◄"))
@@ -71,7 +71,7 @@
     (box :class "cal-allday-section" :orientation "v" :space-evenly false
          :visible {arraylength(calendar-data.all_day) > 0}
       (label :class "cal-section-label" :text "All day" :xalign 0)
-      (scroll :class "cal-allday-scroll" :vscroll true :hscroll false :height 45
+      (scroll :class "cal-allday-scroll" :vscroll true :hscroll false :height 56
         (box :orientation "v" :space-evenly false
           (for item in {calendar-data.all_day}
             (cal-allday-item :title {item.title} :calendar {item.calendar}
@@ -107,10 +107,10 @@
 (defwindow calendar
   :monitor 0
   :geometry (geometry
-    :x "-762px"
-    :y "60px"
-    :width "300px"
-    :height "450px"
+    :x "-890px"
+    :y "50px"
+    :width "500px"
+    :height "563px"
     :anchor "top right")
   :stacking "bottom"
   :focusable false

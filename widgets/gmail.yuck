@@ -9,21 +9,21 @@
       (box :space-evenly false
         (label :class "email-from" :text from_name :hexpand true :xalign 0 :limit-width 35 :truncate true)
         (label :class "email-time" :text time))
-      (box :space-evenly false :spacing 4
+      (box :space-evenly false :spacing 5
         (label :class "email-subject" :text subject :limit-width 25 :truncate true :xalign 0)
         (label :class "email-snippet" :text "— ${snippet}" :hexpand true :xalign 0 :limit-width 25 :truncate true)))))
 
 (defwidget gmail-widget []
   (box :class "card" :orientation "v" :space-evenly false
     ;; Header
-    (box :class "header" :space-evenly false :spacing 8 :halign "center"
+    (box :class "header" :space-evenly false :spacing 10 :halign "center"
       (image :class "gmail-logo" :path "assets/gmail.svg"
-             :image-width 20 :image-height 20)
+             :image-width 25 :image-height 25)
       (label :class "badge" :text {gmail-data.total} :visible {gmail-data.total > 0}))
 
     ;; Email list
     (scroll :class "items-scroll" :vscroll true :hscroll false
-            :height 290
+            :height 363
             :visible {gmail-data.total > 0}
       (box :orientation "v" :space-evenly false
         (for item in {gmail-data.items}
@@ -47,10 +47,10 @@
 (defwindow gmail
   :monitor 0
   :geometry (geometry
-    :x "-1025px"
-    :y "514px"
-    :width "500px"
-    :height "377px"
+    :x "-1210px"
+    :y "623px"
+    :width "625px"
+    :height "471px"
     :anchor "top right")
   :stacking "bottom"
   :focusable false
