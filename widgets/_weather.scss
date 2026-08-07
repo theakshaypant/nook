@@ -1,51 +1,4 @@
-// Condition themes — background shifts based on weather + time of day
-.weather-clear-day {
-    background-color: #2d2520;
-}
-
-.weather-clear-night {
-    background-color: #1a1a24;
-}
-
-.weather-cloudy {
-    background-color: #252525;
-}
-
-.weather-cloudy-night {
-    background-color: #1c1c22;
-}
-
-.weather-rain {
-    background-color: #202428;
-}
-
-.weather-rain-night {
-    background-color: #181c20;
-}
-
-.weather-snow {
-    background-color: #262830;
-}
-
-.weather-snow-night {
-    background-color: #1c1e26;
-}
-
-.weather-storm {
-    background-color: #221a28;
-}
-
-.weather-storm-night {
-    background-color: #1a1420;
-}
-
-.weather-fog {
-    background-color: #242422;
-}
-
-.weather-fog-night {
-    background-color: #1c1c1a;
-}
+// Condition themes applied via inline :style in weather.yuck
 
 // Temperature color classes
 .temp-cold {
@@ -61,11 +14,11 @@
 }
 
 .temp-warm {
-    color: #b89470;
+    color: #d4a860;
 }
 
 .temp-hot {
-    color: #b07868;
+    color: #d08060;
 }
 
 // City

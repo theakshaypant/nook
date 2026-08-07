@@ -104,6 +104,9 @@ def wmo_info(is_day):
      theme: (if is_day then "cloudy" else "cloudy-night" end)}
   end;
 
+def theme_bg:
+  {"clear-day":"#523a14","clear-night":"#161630","cloudy":"#2a2a2a","cloudy-night":"#1c1c24","rain":"#1a2230","rain-night":"#141a24","snow":"#242838","snow-night":"#1a1e2e","storm":"#1e1430","storm-night":"#161020","fog":"#282824","fog-night":"#1e1e1a"}[.] // "#262220";
+
 def temp_class:
   if . < 5 then "cold"
   elif . < 15 then "cool"
@@ -141,6 +144,7 @@ def temp_class:
   uv: ($d.uv_index_max[0] | round),
   pressure: ($c.surface_pressure | round),
   theme: $w.theme,
+  theme_bg: ($w.theme | theme_bg),
   temp_class: ($c.temperature_2m | temp_class),
   hourly: .,
   updated: $now

@@ -1,6 +1,6 @@
 (defpoll weather-data
   :interval "900s"
-  :initial '{"city":"--","temp":0,"feels_like":0,"high":0,"low":0,"condition":"--","icon":"","icon_gif":"overcast","humidity":0,"wind":0,"uv":0,"pressure":0,"theme":"cloudy","temp_class":"mild","hourly":[],"updated":"--:--"}'
+  :initial '{"city":"--","temp":0,"feels_like":0,"high":0,"low":0,"condition":"--","icon":"","icon_gif":"overcast","humidity":0,"wind":0,"uv":0,"pressure":0,"theme":"cloudy","theme_bg":"#262220","temp_class":"mild","hourly":[],"updated":"--:--"}'
   `scripts/fetch_weather.sh`)
 
 (defwidget weather-hour [time temp icon temp_class]
@@ -10,7 +10,7 @@
     (label :class "wh-temp temp-${temp_class}" :text "${temp}°")))
 
 (defwidget weather-widget []
-  (box :class "card weather-card weather-${weather-data.theme}" :orientation "v" :space-evenly false
+  (box :class "card weather-card" :style "background-color: ${weather-data.theme_bg};" :orientation "v" :space-evenly false
     ;; City
     (box :halign "center" :space-evenly false :spacing 5
       (label :class "weather-city-pin" :text "📍")
