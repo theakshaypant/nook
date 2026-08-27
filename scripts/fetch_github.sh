@@ -58,7 +58,7 @@ jq -n \
         unread: $counts.unread,
         by_reason: $counts.by_reason,
         items: [($notifs | sort_by(.updated) | reverse)[] |
-            (.url | split("/") | last) as $num |
+            (.url | if . then split("/") | last else null end) as $num |
         {
             title: .title,
             repo: (.repo + (if (.type == "PullRequest" or .type == "Issue" or .type == "Discussion") and $num != null
@@ -68,6 +68,7 @@ jq -n \
                    elif .type == "Discussion" then "Disc"
                    elif .type == "CheckSuite" then "CI"
                    elif .type == "Release" then "Rel"
+                   elif .type == "RepositoryAdvisory" then "Adv"
                    else .type end),
             url: (if .url then
                     (.url | gsub("api\\.github\\.com/repos"; "github.com")
@@ -76,4 +77,4 @@ jq -n \
                   else ("https://github.com/" + .repo) end)
         }],
         updated: $now
-    }' | tee "$CACHE_FILE"
+    }' | tee "$CACHE_FILE.tmp" && mv "$CACHE_FILE.tmp" "$CACHE_FILE"

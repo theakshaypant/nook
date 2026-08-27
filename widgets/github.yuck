@@ -52,7 +52,7 @@
 
     ;; Items
     (scroll :class "items-scroll" :vscroll true :hscroll false
-            :height 188
+            :height 408
             :visible {github-data.total > 0}
       (box :orientation "v" :space-evenly false
         (for item in {github-data.items}
