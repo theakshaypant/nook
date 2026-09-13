@@ -54,9 +54,9 @@ offset_to_mins() {
 local_utc_offset=$(date '+%z')
 local_offset_mins=$(offset_to_mins "$local_utc_offset")
 
-mapfile -t names < <(sed -n 's/^ *- *name: *"\([^"]*\)"/\1/p' "$CONFIG")
-mapfile -t timezones < <(sed -n 's/^ *timezone: *"\([^"]*\)"/\1/p' "$CONFIG")
-mapfile -t flags < <(sed -n 's/^ *flag: *"\(.*\)"/\1/p' "$CONFIG")
+mapfile -t names < <(yq -r '.watch.cities[].name' "$CONFIG")
+mapfile -t timezones < <(yq -r '.watch.cities[].timezone' "$CONFIG")
+mapfile -t flags < <(yq -r '.watch.cities[].flag' "$CONFIG")
 
 base_offset_mins="$local_offset_mins"
 base_hh=""

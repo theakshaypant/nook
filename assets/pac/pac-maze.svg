@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 180">
+  <!-- Background -->
+  <rect width="560" height="180" fill="#000" rx="12"/>
+
+  <!-- Outer maze border (double wall) -->
+  <rect x="3" y="3" width="554" height="174" rx="10" fill="none" stroke="#2121DE" stroke-width="3"/>
+  <rect x="7" y="7" width="546" height="166" rx="7" fill="none" stroke="#2121DE" stroke-width="1.5"/>
+
+  <!-- ====== LETTER P (30-170, 28-152) ====== -->
+  <path d="M40,140 V35 H170 V90 H80" fill="none" stroke="#2121DE" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M40,140 V35 H170 V90 H80" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ====== LETTER A (210-350, 28-152) ====== -->
+  <path d="M210,140 V35 H350 V140 M240,90 H316" fill="none" stroke="#2121DE" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M210,140 V35 H350 V140 M240,90 H316" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ====== LETTER C (390-530, 28-152) ====== -->
+    <path d="M530,35 H390 V140 H530"
+        fill="none"
+        stroke="#2121DE"
+        stroke-width="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+    <path d="M530,35 H390 V140 H530"
+        fill="none"
+        stroke="#000"
+        stroke-width="3.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- ====== GHOST HOUSE (inside C opening) ====== -->
+  <rect x="410" y="40" width="100" height="100" rx="4" fill="none" stroke="#FFB8FF" stroke-width="2"/>
+  <line x1="445" y1="40" x2="475" y2="40" stroke="#FFB897" stroke-width="3"/>
+
+  <!-- Maze dots -->
+  <g fill="#FFB897">
+    <!-- Top corridor -->
+    <circle cx="20" cy="20" r="2"/>
+    <circle cx="60" cy="20" r="2"/>
+    <circle cx="100" cy="20" r="2"/>
+    <circle cx="140" cy="20" r="2"/>
+    <circle cx="190" cy="20" r="2"/>
+    <circle cx="230" cy="20" r="2"/>
+    <circle cx="270" cy="20" r="2"/>
+    <circle cx="310" cy="20" r="2"/>
+    <circle cx="370" cy="20" r="2"/>
+    <circle cx="420" cy="20" r="2"/>
+    <circle cx="460" cy="20" r="2"/>
+    <circle cx="500" cy="20" r="2"/>
+    <circle cx="540" cy="20" r="2"/>
+    <!-- Bottom corridor -->
+    <circle cx="20" cy="158" r="2"/>
+    <circle cx="60" cy="158" r="2"/>
+    <circle cx="100" cy="158" r="2"/>
+    <circle cx="140" cy="158" r="2"/>
+    <circle cx="190" cy="158" r="2"/>
+    <circle cx="230" cy="158" r="2"/>
+    <circle cx="270" cy="158" r="2"/>
+    <circle cx="310" cy="158" r="2"/>
+    <circle cx="370" cy="158" r="2"/>
+    <circle cx="420" cy="158" r="2"/>
+    <circle cx="460" cy="158" r="2"/>
+    <circle cx="500" cy="158" r="2"/>
+    <circle cx="540" cy="158" r="2"/>
+    <!-- Left corridor -->
+    <circle cx="20" cy="50" r="2"/>
+    <circle cx="20" cy="80" r="2"/>
+    <circle cx="20" cy="110" r="2"/>
+    <circle cx="20" cy="135" r="2"/>
+    <!-- P-A gap -->
+    <circle cx="190" cy="50" r="2"/>
+    <circle cx="190" cy="80" r="2"/>
+    <circle cx="190" cy="110" r="2"/>
+    <circle cx="190" cy="135" r="2"/>
+    <!-- A-C gap -->
+    <circle cx="370" cy="50" r="2"/>
+    <circle cx="370" cy="80" r="2"/>
+    <circle cx="370" cy="110" r="2"/>
+    <circle cx="370" cy="135" r="2"/>
+  </g>
+
+</svg>

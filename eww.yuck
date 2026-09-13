@@ -5,3 +5,4 @@
 (include "widgets/weather.yuck")
 (include "widgets/gmail.yuck")
 (include "widgets/apps.yuck")
+(include "widgets/pac.yuck")

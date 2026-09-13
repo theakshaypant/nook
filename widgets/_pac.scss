@@ -1,0 +1,36 @@
+.pac-card {
+  background-color: #000;
+}
+
+.pac-banner {
+  margin-bottom: 0;
+}
+
+.pac-maze-btn {
+  padding: 0;
+  margin: 0;
+}
+
+.pac-maze-btn:hover {
+  background: none;
+}
+
+.pac-ghost-btn {
+  padding: 1px;
+  margin: 0;
+}
+
+.pac-ghost-btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+
+.pac-pellet-btn {
+  padding: 0;
+  margin: 0;
+}
+
+.pac-pellet-btn:hover {
+  background: none;
+  opacity: 0.7;
+}

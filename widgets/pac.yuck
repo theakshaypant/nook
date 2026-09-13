@@ -1,0 +1,106 @@
+(defpoll pac-data
+  :interval "86400s"
+  :initial '{"deploy_command":"","ghosts":{"blinky":{"name":"","url":""},"inky":{"name":"","url":""},"pinky":{"name":"","url":""},"clyde":{"name":"","url":""}},"links":[],"total":0,"updated":"--:--"}'
+  `scripts/fetch_pac.sh`)
+
+(defvar pac-deploying "false")
+(defvar pac-mouth "open")
+
+(defwidget pac-widget []
+  (box :class "card pac-card" :orientation "v" :space-evenly false
+    ;; Maze banner with overlays
+    (box :class "pac-banner" :halign "center"
+      (overlay
+        (image :path "assets/pac/pac-maze.svg"
+               :image-width 525 :image-height 169)
+        ;; Ghost buttons (2x2 grid over ghost house in C opening)
+        (box :halign "start" :valign "start"
+             :orientation "v" :space-evenly false :spacing 4
+             :style "margin-left: 406px; margin-top: 49px;"
+          (box :space-evenly false :spacing 4
+            (button :class "pac-ghost-btn" :onclick "xdg-open '${pac-data.ghosts.blinky.url}' &"
+                    :tooltip {pac-data.ghosts.blinky.name}
+              (image :path "assets/pac/ghost-blinky.svg" :image-width 23 :image-height 34))
+            (button :class "pac-ghost-btn" :onclick "xdg-open '${pac-data.ghosts.inky.url}' &"
+                    :tooltip {pac-data.ghosts.inky.name}
+              (image :path "assets/pac/ghost-inky.svg" :image-width 23 :image-height 34)))
+          (box :space-evenly false :spacing 4
+            (button :class "pac-ghost-btn" :onclick "xdg-open '${pac-data.ghosts.pinky.url}' &"
+                    :tooltip {pac-data.ghosts.pinky.name}
+              (image :path "assets/pac/ghost-pinky.svg" :image-width 23 :image-height 34))
+            (button :class "pac-ghost-btn" :onclick "xdg-open '${pac-data.ghosts.clyde.url}' &"
+                    :tooltip {pac-data.ghosts.clyde.name}
+              (image :path "assets/pac/ghost-clyde.svg" :image-width 23 :image-height 34))))
+        ;; Pac-Man deploy button (inside A upper counter)
+        (box :halign "start" :valign "start"
+             :style "margin-left: 246px; margin-top: 41px;"
+          (button :class "pac-maze-btn"
+                  :onclick "(scripts/pac_chomp.sh start; scripts/pac_deploy.sh || true; scripts/pac_chomp.sh stop) &"
+            (image :path {pac-mouth == "closed" ? "assets/pac/pacman-closed.svg" : "assets/pac/pacman-left.svg"}
+                   :image-width 34 :image-height 34)))
+        ;; Link pellets scattered across the maze (12px, placed in safe interior zones)
+        (box :halign "start" :valign "start" :visible {pac-data.total > 0}
+             :style "margin-left: 92px; margin-top: 52px;"
+          (button :class "pac-pellet-btn" :onclick "xdg-open '${pac-data.links[0].url}' &"
+                  :tooltip {pac-data.links[0].name}
+            (image :path "assets/pac/pellet.svg" :image-width 15 :image-height 15)))
+        (box :halign "start" :valign "start" :visible {pac-data.total > 1}
+             :style "margin-left: 341px; margin-top: 64px;"
+          (button :class "pac-pellet-btn" :onclick "xdg-open '${pac-data.links[1].url}' &"
+                  :tooltip {pac-data.links[1].name}
+            (image :path "assets/pac/pellet.svg" :image-width 15 :image-height 15)))
+        (box :halign "start" :valign "start" :visible {pac-data.total > 2}
+             :style "margin-left: 257px; margin-top: 102px;"
+          (button :class "pac-pellet-btn" :onclick "xdg-open '${pac-data.links[2].url}' &"
+                  :tooltip {pac-data.links[2].name}
+            (image :path "assets/pac/pellet.svg" :image-width 15 :image-height 15)))
+        (box :halign "start" :valign "start" :visible {pac-data.total > 3}
+             :style "margin-left: 116px; margin-top: 105px;"
+          (button :class "pac-pellet-btn" :onclick "xdg-open '${pac-data.links[3].url}' &"
+                  :tooltip {pac-data.links[3].name}
+            (image :path "assets/pac/pellet.svg" :image-width 15 :image-height 15)))
+        (box :halign "start" :valign "start" :visible {pac-data.total > 4}
+             :style "margin-left: 341px; margin-top: 142px;"
+          (button :class "pac-pellet-btn" :onclick "xdg-open '${pac-data.links[4].url}' &"
+                  :tooltip {pac-data.links[4].name}
+            (image :path "assets/pac/pellet.svg" :image-width 15 :image-height 15)))
+        (box :halign "start" :valign "start" :visible {pac-data.total > 5}
+             :style "margin-left: 15px; margin-top: 78px;"
+          (button :class "pac-pellet-btn" :onclick "xdg-open '${pac-data.links[5].url}' &"
+                  :tooltip {pac-data.links[5].name}
+            (image :path "assets/pac/pellet.svg" :image-width 15 :image-height 15)))
+        (box :halign "start" :valign "start" :visible {pac-data.total > 6}
+             :style "margin-left: 172px; margin-top: 46px;"
+          (button :class "pac-pellet-btn" :onclick "xdg-open '${pac-data.links[6].url}' &"
+                  :tooltip {pac-data.links[6].name}
+            (image :path "assets/pac/pellet.svg" :image-width 15 :image-height 15)))
+        (box :halign "start" :valign "start" :visible {pac-data.total > 7}
+             :style "margin-left: 285px; margin-top: 52px;"
+          (button :class "pac-pellet-btn" :onclick "xdg-open '${pac-data.links[7].url}' &"
+                  :tooltip {pac-data.links[7].name}
+            (image :path "assets/pac/pellet.svg" :image-width 15 :image-height 15)))
+        (box :halign "start" :valign "start" :visible {pac-data.total > 8}
+             :style "margin-left: 172px; margin-top: 116px;"
+          (button :class "pac-pellet-btn" :onclick "xdg-open '${pac-data.links[8].url}' &"
+                  :tooltip {pac-data.links[8].name}
+            (image :path "assets/pac/pellet.svg" :image-width 15 :image-height 15)))
+        (box :halign "start" :valign "start" :visible {pac-data.total > 9}
+             :style "margin-left: 88px; margin-top: 142px;"
+          (button :class "pac-pellet-btn" :onclick "xdg-open '${pac-data.links[9].url}' &"
+                  :tooltip {pac-data.links[9].name}
+            (image :path "assets/pac/pellet.svg" :image-width 15 :image-height 15)))))
+
+))
+
+(defwindow pac
+  :monitor 0
+  :geometry (geometry
+    :x "-440px"
+    :y "621px"
+    :width "555px"
+    :height "195px"
+    :anchor "top right")
+  :stacking "bottom"
+  :focusable false
+  :windowtype "desktop"
+  (pac-widget))

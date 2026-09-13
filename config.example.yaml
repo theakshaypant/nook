@@ -29,3 +29,30 @@ apps:
   - dev.zed.Zed
   - com.brave.Browser
   - org.mozilla.firefox
+
+pac:
+  deploy_command: "echo 'deploy not configured'"
+  ghosts:
+    blinky:
+      name: "Repo"
+      url: "https://github.com/openshift-pipelines/pipelines-as-code"
+    inky:
+      name: "GHE PAC"
+      url: "https://example.com"
+    pinky:
+      name: "Fork"
+      url: "https://github.com/YOURUSER/pipelines-as-code"
+    clyde:
+      name: "GitLab PAC"
+      url: "https://example.com"
+  links:
+    - name: "GH App Test"
+      url: "https://example.com"
+    - name: "GH Webhook Test"
+      url: "https://example.com"
+    - name: "GL Test"
+      url: "https://example.com"
+    - name: "Infra"
+      url: "https://example.com"
+    - name: "PAC Org"
+      url: "https://github.com/openshift-pipelines"
